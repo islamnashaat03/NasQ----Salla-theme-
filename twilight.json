@@ -1202,6 +1202,7 @@
             "title": {"en":"Moving announcement","ar":"شريط نص متحرك"},
             "icon": "sicon-megaphone",
             "path": "home.moving-announcement",
+            "image": "https://raw.githubusercontent.com/islamnashaat03/NasQ----Salla-theme-/main/public/images/component-previews/nasq-component-preview.png",
             "is_default": true,
             "fields": [
                 {"id":"text","type":"string","format":"text","label":"النص","multilanguage":true,"value":"شحن سريع • دفع آمن • استبدال سهل","required":true},
@@ -1215,6 +1216,7 @@
             "title": {"en":"Split content","ar":"صورة مع محتوى"},
             "icon": "sicon-layout-grid-rearrange",
             "path": "home.split-content",
+            "image": "https://raw.githubusercontent.com/islamnashaat03/NasQ----Salla-theme-/main/public/images/component-previews/nasq-component-preview.png",
             "is_default": true,
             "fields": [
                 {"id":"eyebrow","type":"string","format":"text","label":"عنوان صغير","multilanguage":true,"required":false},
@@ -1231,6 +1233,7 @@
             "title": {"en":"Icon feature grid","ar":"مميزات بأيقونات"},
             "icon": "sicon-stars",
             "path": "home.icon-feature-grid",
+            "image": "https://raw.githubusercontent.com/islamnashaat03/NasQ----Salla-theme-/main/public/images/component-previews/nasq-component-preview.png",
             "is_default": true,
             "fields": [
                 {"id":"title","type":"string","format":"text","label":"العنوان","multilanguage":true,"required":false},
@@ -1247,6 +1250,7 @@
             "title": {"en":"Visual cards","ar":"بطاقات بصرية"},
             "icon": "sicon-image",
             "path": "home.visual-cards",
+            "image": "https://raw.githubusercontent.com/islamnashaat03/NasQ----Salla-theme-/main/public/images/component-previews/nasq-component-preview.png",
             "is_default": true,
             "fields": [
                 {"id":"title","type":"string","format":"text","label":"العنوان","multilanguage":true,"required":false},
@@ -1264,6 +1268,7 @@
             "title": {"en":"Shop the look","ar":"تسوقي الإطلالة"},
             "icon": "sicon-t-shirt",
             "path": "home.shop-the-look",
+            "image": "https://raw.githubusercontent.com/islamnashaat03/NasQ----Salla-theme-/main/public/images/component-previews/nasq-component-preview.png",
             "is_default": true,
             "fields": [
                 {"id":"title","type":"string","format":"text","label":"العنوان","multilanguage":true,"value":"تسوقي الإطلالة","required":true},
@@ -1279,6 +1284,7 @@
             "title": {"en":"Occasion collections","ar":"تسوقي حسب المناسبة"},
             "icon": "sicon-grid",
             "path": "home.occasion-collections",
+            "image": "https://raw.githubusercontent.com/islamnashaat03/NasQ----Salla-theme-/main/public/images/component-previews/nasq-component-preview.png",
             "is_default": true,
             "fields": [
                 {"id":"title","type":"string","format":"text","label":"العنوان","multilanguage":true,"value":"اختاري إطلالتك","required":true},
