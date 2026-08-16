@@ -1,0 +1,11 @@
+<section class="nasq-split nasq-split--{{ component.image_position }} s-block">
+  <div class="container nasq-split__grid">
+    <figure class="nasq-split__media"><img src="{{ component.image }}" loading="lazy" decoding="async" width="900" height="760" alt="{{ component.title }}"></figure>
+    <div class="nasq-split__copy">
+      {% if component.eyebrow %}<span class="nasq-eyebrow">{{ component.eyebrow }}</span>{% endif %}
+      <h2>{{ component.title }}</h2>
+      <div class="nasq-richtext">{{ component.text|raw }}</div>
+      {% if component.button_url %}<a class="nasq-button" href="{{ component.button_url }}">{{ component.button_text }}</a>{% endif %}
+    </div>
+  </div>
+</section>

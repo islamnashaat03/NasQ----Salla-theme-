@@ -1,0 +1,16 @@
+<section class="nasq-occasions s-block" aria-labelledby="occasions-{{ position }}">
+  <div class="container">
+    <header class="nasq-section-heading"><h2 id="occasions-{{ position }}">{{ component.title }}</h2></header>
+    <div class="nasq-occasions__grid">
+      {% for item in component.items %}
+        <a class="nasq-occasion" href="{{ item.url }}">
+          <img src="{{ item.image }}" loading="lazy" decoding="async" width="640" height="800" alt="{{ item.title }}">
+          <span class="nasq-occasion__overlay">
+            <strong>{{ item.title }}</strong>
+            {% if item.subtitle %}<small>{{ item.subtitle }}</small>{% endif %}
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

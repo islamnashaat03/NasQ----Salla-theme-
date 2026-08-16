@@ -1,0 +1,5 @@
+<section class="nasq-marquee" style="--nasq-marquee-bg:{{ component.background }};--nasq-marquee-color:{{ component.color }};--nasq-marquee-speed:{{ component.speed }}s" aria-label="{{ component.text }}">
+  <div class="nasq-marquee__track">
+    {% for copy in 1..4 %}<span aria-hidden="{{ loop.first ? 'false' : 'true' }}">{{ component.text }}</span>{% endfor %}
+  </div>
+</section>

@@ -1,0 +1,13 @@
+<section class="nasq-visual-cards s-block nasq-visual-cards--{{ component.columns }}">
+  <div class="container">
+    {% if component.title %}<header class="nasq-section-heading"><h2>{{ component.title }}</h2></header>{% endif %}
+    <div class="nasq-visual-cards__grid">
+      {% for item in component.items %}
+        <a class="nasq-visual-card" href="{{ item.url }}">
+          <img src="{{ item.image }}" loading="lazy" decoding="async" width="640" height="760" alt="{{ item.title }}">
+          <span><strong>{{ item.title }}</strong>{% if item.text %}<small>{{ item.text }}</small>{% endif %}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
