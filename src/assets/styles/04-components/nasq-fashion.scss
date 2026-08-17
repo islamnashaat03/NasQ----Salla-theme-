@@ -54,6 +54,44 @@ body { color: var(--nasq-ink); background: #fffdfb; }
 .nasq-section-heading { margin-bottom: 1.5rem; text-align: center; }
 .nasq-section-heading h2, .nasq-lookbook h2 { font-size: clamp(1.55rem, 3vw, 2.6rem); font-weight: 700; line-height: 1.3; }
 
+.nasq-hero { position: relative; min-height: 100vh; min-height: 100dvh; display: grid; overflow: hidden; isolation: isolate; background: #172c2b var(--nasq-hero-image) center/cover no-repeat; }
+.nasq-hero__overlay { position: absolute; inset: 0; z-index: -1; background: var(--nasq-hero-overlay, #000); opacity: var(--nasq-hero-overlay-opacity, .38); }
+.nasq-hero__inner { min-height: 100vh; min-height: 100dvh; display: flex; align-items: center; justify-content: var(--nasq-hero-align, center); padding-block: clamp(6rem, 12vh, 10rem) 3rem; }
+.nasq-hero__content { width: min(760px, 100%); text-align: center; }
+.nasq-hero__content h2 { margin: 0; color: var(--nasq-hero-title-color, #fff); font-size: clamp(2rem, calc(var(--nasq-hero-title-size, 64px) * .72), var(--nasq-hero-title-size, 64px)); font-weight: 800; line-height: 1.12; text-wrap: balance; }
+.nasq-hero__content p { max-width: 650px; margin: 1.25rem auto 0; color: var(--nasq-hero-text-color, #fff); font-size: clamp(1rem, calc(var(--nasq-hero-text-size, 20px) * .9), var(--nasq-hero-text-size, 20px)); line-height: 1.8; }
+.nasq-hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: 2rem; }
+.nasq-hero__button { min-width: 150px; padding: .9rem 1.5rem; border: 1px solid transparent; border-radius: 999px; font-weight: 700; text-align: center; transition: color .25s ease, background-color .25s ease, border-color .25s ease, transform .25s ease; }
+.nasq-hero__button:hover { transform: translateY(-2px); }
+.nasq-hero__button--one { color: var(--nasq-btn1-color, #172c2b); background: var(--nasq-btn1-bg, #fff); }
+.nasq-hero__button--one:hover { color: var(--nasq-btn1-hover-color, #fff); background: var(--nasq-btn1-hover-bg, #172c2b); }
+.nasq-hero__button--two { color: var(--nasq-btn2-color, #fff); background: var(--nasq-btn2-bg, transparent); border-color: currentColor; }
+.nasq-hero__button--two:hover { color: var(--nasq-btn2-hover-color, #172c2b); background: var(--nasq-btn2-hover-bg, #fff); }
+
+.nasq-about { padding: clamp(3rem, 7vw, 7rem) 0; background: var(--nasq-about-bg, #f7f3ed); }
+.nasq-about__grid { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 5rem); align-items: stretch; }
+.nasq-about__content { display: flex; flex-direction: column; justify-content: center; }
+.nasq-about__content h2 { margin: .65rem 0 1.25rem; color: var(--color-primary); font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 800; line-height: 1.2; text-wrap: balance; }
+.nasq-about__text { color: #4b5563; font-size: 1.05rem; line-height: 2; }
+.nasq-about__text p + p { margin-top: .85rem; }
+.nasq-about__content .nasq-button { align-self: flex-start; margin-top: 1.75rem; }
+.nasq-about__media { min-height: 360px; overflow: hidden; border-radius: clamp(1rem, 2vw, 1.75rem); background: #e7dfd4; }
+.nasq-about__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.nasq-about__media:hover img { transform: scale(1.025); }
+
+@media (min-width: 768px) {
+  .nasq-hero--flex-start .nasq-hero__content { text-align: start; }
+  .nasq-hero--flex-start .nasq-hero__content p { margin-inline: 0; }
+  .nasq-hero--flex-start .nasq-hero__actions { justify-content: flex-start; }
+  .nasq-hero--flex-end .nasq-hero__content { text-align: end; }
+  .nasq-hero--flex-end .nasq-hero__content p { margin-inline-start: auto; margin-inline-end: 0; }
+  .nasq-hero--flex-end .nasq-hero__actions { justify-content: flex-end; }
+  .nasq-about__grid { flex-direction: row; }
+  .nasq-about__content { flex: 0 1 var(--nasq-about-content, 50%); }
+  .nasq-about__media { flex: 0 1 var(--nasq-about-image, 50%); }
+  .nasq-about--image-start .nasq-about__media { order: -1; }
+}
+
 .nasq-lookbook { padding: clamp(2.5rem, 7vw, 6rem) 0; background: var(--nasq-sand); }
 .nasq-lookbook__grid { display: grid; gap: 2rem; align-items: center; }
 .nasq-lookbook__visual { overflow: hidden; border-radius: 1.25rem; aspect-ratio: 4/5; background: #e8e0d8; }
@@ -138,3 +176,4 @@ salla-product-options { --color-primary: var(--nasq-ink); }
   .nasq-lookbook__visual img, .nasq-occasion img, .nasq-visual-card img { transition: none; }
   .nasq-marquee__track { animation: none; }
 }
+
