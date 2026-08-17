@@ -3,9 +3,12 @@
 |------------------|---------|---------------------------------|
 | cart             | object  |                                 |
 | cart.items_count | int     |                                 |
-| cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
+| cart.total       | string  | Formatted total ex: "Ù¡Ù Ù  Ø±.Ø³"   |
 #}
 {% set important_links = theme.settings.get('important_links') %}
+{% set header_logo = theme.settings.get('header_custom_logo') %}
+{% set header_logo_width = theme.settings.get('header_logo_width')|default(175) %}
+{% set header_logo_height = theme.settings.get('header_logo_height')|default(48) %}
 <header data-testid="store-header" class="store-header">
   {# Top Nav #}
   <div class="top-navbar">
@@ -51,7 +54,11 @@
                         <i class="sicon-menu text-primary text-2xl"></i>
                       </a>
                       <a data-testid="store-header-logo" class="navbar-brand" href="{{ store.url }}">
-                          <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo|cdn(175) }}" alt="{{ store.name }} logo">
+                          <img fetchpriority="high"
+                               loading="eager"
+                               src="{{ header_logo ? header_logo : store.logo|cdn(header_logo_width) }}"
+                               alt="{{ store.name }} logo"
+                               style="--nasq-logo-width: {{ header_logo_width }}px; --nasq-logo-height: {{ header_logo_height }}px;">
                           {% if is_page('index') %}
                             <h1 class="sr-only">{{ store.name }}</h1>
                           {% else %}
@@ -71,3 +78,4 @@
       </div>
   </div>
 </header>
+
