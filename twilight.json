@@ -1251,7 +1251,7 @@
                 {"id":"title","type":"string","format":"text","label":"العنوان","multilanguage":true,"value":"حكاية العلامة","required":true},
                 {"id":"text","type":"string","format":"textarea","label":"المحتوى","multilanguage":true,"required":true},
                 {"id":"image","type":"string","format":"image","label":"الصورة","required":true},
-                {"id":"image_position","type":"items","format":"dropdown-list","label":"مكان الصورة","selected":[{"label":"يمين","value":"start"}],"options":[{"label":"يمين","value":"start"},{"label":"يسار","value":"end"}],"required":true},
+                {"id":"image_position","type":"items","format":"dropdown-list","label":"مكان الصورة","selected":[{"label":"يمين","value":"start","key":"split-image-start"}],"options":[{"label":"يمين","value":"start","key":"split-image-start"},{"label":"يسار","value":"end","key":"split-image-end"}],"required":true},
                 {"id":"button_text","type":"string","format":"text","label":"نص الزر","multilanguage":true,"required":false},
                 {"id":"button_url","type":"string","format":"url","label":"رابط الزر","required":false}
             ]
@@ -1282,7 +1282,7 @@
             "is_default": true,
             "fields": [
                 {"id":"title","type":"string","format":"text","label":"العنوان","multilanguage":true,"required":false},
-                {"id":"columns","type":"items","format":"dropdown-list","label":"عدد الأعمدة","selected":[{"label":"3 أعمدة","value":"3"}],"options":[{"label":"عمودان","value":"2"},{"label":"3 أعمدة","value":"3"},{"label":"4 أعمدة","value":"4"}],"required":true},
+                {"id":"columns","type":"items","format":"dropdown-list","label":"عدد الأعمدة","selected":[{"label":"3 أعمدة","value":"3","key":"visual-columns-3"}],"options":[{"label":"عمودان","value":"2","key":"visual-columns-2"},{"label":"3 أعمدة","value":"3","key":"visual-columns-3"},{"label":"4 أعمدة","value":"4","key":"visual-columns-4"}],"required":true},
                 {"id":"items","type":"collection","format":"collection","label":"البطاقات","item_label":"بطاقة","minLength":2,"maxLength":8,"required":true,"fields":[
                     {"id":"items.image","type":"string","format":"image","label":"الصورة","required":true},
                     {"id":"items.title","type":"string","format":"text","label":"العنوان","multilanguage":true,"required":true},
@@ -1335,7 +1335,7 @@
                 {"id":"background_image","type":"string","format":"image","label":"صورة الخلفية","value":"https://cdn.jsdelivr.net/gh/islamnashaat03/NasQ----Salla-theme-@main/public/images/component-previews/nasq-hero.png","required":true},
                 {"id":"overlay_color","type":"string","format":"color","label":"لون طبقة التعتيم","value":"#000000","required":true},
                 {"id":"overlay_opacity","type":"number","format":"integer","label":"شفافية طبقة التعتيم","value":38,"minimum":0,"maximum":90,"required":true},
-                {"id":"content_alignment","type":"items","format":"dropdown-list","label":"محاذاة المحتوى","selected":[{"label":"المنتصف","value":"center"}],"options":[{"label":"يمين","value":"flex-start"},{"label":"المنتصف","value":"center"},{"label":"يسار","value":"flex-end"}],"required":true},
+                {"id":"content_alignment","type":"items","format":"dropdown-list","label":"محاذاة المحتوى","selected":[{"label":"المنتصف","value":"center","key":"hero-align-center"}],"options":[{"label":"يمين","value":"flex-start","key":"hero-align-start"},{"label":"المنتصف","value":"center","key":"hero-align-center"},{"label":"يسار","value":"flex-end","key":"hero-align-end"}],"required":true},
                 {"id":"title","type":"string","format":"textarea","label":"النص الرئيسي","multilanguage":true,"value":"إطلالة تعبّر عنك","required":true},
                 {"id":"title_size","type":"number","format":"integer","label":"حجم النص الرئيسي","value":64,"minimum":28,"maximum":110,"required":true},
                 {"id":"title_color","type":"string","format":"color","label":"لون النص الرئيسي","value":"#ffffff","required":true},
@@ -1370,7 +1370,7 @@
                 {"id":"button_text","type":"string","format":"text","label":"نص الزر","multilanguage":true,"value":"اعرفي المزيد","required":false},
                 {"id":"button_url","type":"string","format":"url","label":"رابط الزر","required":false},
                 {"id":"image","type":"string","format":"image","label":"الصورة","value":"https://cdn.jsdelivr.net/gh/islamnashaat03/NasQ----Salla-theme-@main/public/images/component-previews/about-us-split.png","required":true},
-                {"id":"image_position","type":"items","format":"dropdown-list","label":"مكان الصورة","selected":[{"label":"يسار المحتوى","value":"start"}],"options":[{"label":"يسار المحتوى","value":"start"},{"label":"يمين المحتوى","value":"end"}],"required":true},
+                {"id":"image_position","type":"items","format":"dropdown-list","label":"مكان الصورة","selected":[{"label":"يسار المحتوى","value":"start","key":"about-image-start"}],"options":[{"label":"يسار المحتوى","value":"start","key":"about-image-start"},{"label":"يمين المحتوى","value":"end","key":"about-image-end"}],"required":true},
                 {"id":"content_width","type":"number","format":"integer","label":"نسبة عرض المحتوى","value":50,"minimum":25,"maximum":75,"required":true},
                 {"id":"image_width","type":"number","format":"integer","label":"نسبة عرض الصورة","value":50,"minimum":25,"maximum":75,"required":true},
                 {"id":"background_color","type":"string","format":"color","label":"لون خلفية السكشن","value":"#f7f3ed","required":true}
