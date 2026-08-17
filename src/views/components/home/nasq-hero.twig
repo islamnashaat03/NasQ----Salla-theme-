@@ -1,4 +1,4 @@
-<section class="nasq-hero nasq-hero--{{ component.content_alignment }}" style="--nasq-hero-image:url('{{ component.background_image }}');--nasq-hero-overlay:{{ component.overlay_color }};--nasq-hero-overlay-opacity:{{ component.overlay_opacity / 100 }};--nasq-hero-align:{{ component.content_alignment }};--nasq-hero-title-size:{{ component.title_size }}px;--nasq-hero-title-color:{{ component.title_color }};--nasq-hero-text-size:{{ component.text_size }}px;--nasq-hero-text-color:{{ component.text_color }};--nasq-btn1-bg:{{ component.button_one_background }};--nasq-btn1-color:{{ component.button_one_color }};--nasq-btn1-hover-bg:{{ component.button_one_hover_background }};--nasq-btn1-hover-color:{{ component.button_one_hover_color }};--nasq-btn2-bg:{{ component.button_two_background }};--nasq-btn2-color:{{ component.button_two_color }};--nasq-btn2-hover-bg:{{ component.button_two_hover_background }};--nasq-btn2-hover-color:{{ component.button_two_hover_color }};">
+<section class="nasq-hero nasq-hero--{{ component.content_alignment }}" style="--nasq-hero-image:url('{{ component.background_image }}');--nasq-hero-overlay:{{ component.overlay_color }};--nasq-hero-overlay-opacity:calc({{ component.overlay_opacity }} / 100);--nasq-hero-align:{{ component.content_alignment }};--nasq-hero-title-size:{{ component.title_size }}px;--nasq-hero-title-color:{{ component.title_color }};--nasq-hero-text-size:{{ component.text_size }}px;--nasq-hero-text-color:{{ component.text_color }};--nasq-btn1-bg:{{ component.button_one_background }};--nasq-btn1-color:{{ component.button_one_color }};--nasq-btn1-hover-bg:{{ component.button_one_hover_background }};--nasq-btn1-hover-color:{{ component.button_one_hover_color }};--nasq-btn2-bg:{{ component.button_two_background }};--nasq-btn2-color:{{ component.button_two_color }};--nasq-btn2-hover-bg:{{ component.button_two_hover_background }};--nasq-btn2-hover-color:{{ component.button_two_hover_color }};">
   <div class="nasq-hero__overlay" aria-hidden="true"></div>
   <div class="container nasq-hero__inner">
     <div class="nasq-hero__content">
@@ -6,8 +6,8 @@
       {% if component.text %}<p>{{ component.text }}</p>{% endif %}
       {% if component.button_one_text or component.button_two_text %}
         <div class="nasq-hero__actions">
-          {% if component.button_one_text %}<a class="nasq-hero__button nasq-hero__button--one" href="{{ component.button_one_url|default('#') }}">{{ component.button_one_text }}</a>{% endif %}
-          {% if component.button_two_text %}<a class="nasq-hero__button nasq-hero__button--two" href="{{ component.button_two_url|default('#') }}">{{ component.button_two_text }}</a>{% endif %}
+          {% if component.button_one_text %}<a class="nasq-hero__button nasq-hero__button--one" href="{{ component.button_one_url }}">{{ component.button_one_text }}</a>{% endif %}
+          {% if component.button_two_text %}<a class="nasq-hero__button nasq-hero__button--two" href="{{ component.button_two_url }}">{{ component.button_two_text }}</a>{% endif %}
         </div>
       {% endif %}
     </div>
