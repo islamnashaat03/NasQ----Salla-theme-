@@ -1,0 +1,16 @@
+<section class="nasq-about s-block nasq-about--image-{{ component.image_position }}" style="--nasq-about-content:{{ component.content_width }}%;--nasq-about-image:{{ component.image_width }}%;--nasq-about-bg:{{ component.background_color }};">
+  <div class="container">
+    <div class="nasq-about__grid">
+      <div class="nasq-about__content">
+        {% if component.eyebrow %}<span class="nasq-eyebrow">{{ component.eyebrow }}</span>{% endif %}
+        {% if component.title %}<h2>{{ component.title }}</h2>{% endif %}
+        {% if component.text %}<div class="nasq-about__text">{{ component.text|nl2br }}</div>{% endif %}
+        {% if component.button_text %}<a class="nasq-button" href="{{ component.button_url|default('#') }}">{{ component.button_text }}</a>{% endif %}
+      </div>
+      <figure class="nasq-about__media">
+        <img src="{{ component.image }}" loading="lazy" decoding="async" width="1000" height="900" alt="{{ component.title }}">
+      </figure>
+    </div>
+  </div>
+</section>
+
