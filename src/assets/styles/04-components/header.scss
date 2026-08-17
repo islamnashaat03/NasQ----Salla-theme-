@@ -146,7 +146,11 @@
   @apply items-center flex my-2 lg:my-0;
 
   img {
-    @apply w-auto max-h-12 max-w-[100px] xs:max-w-[170px];
+    width: min(var(--nasq-logo-width, 175px), 42vw);
+    height: var(--nasq-logo-height, 48px);
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
   }
 }
 
@@ -218,7 +222,7 @@ salla-user-menu{
 /* ============================
    Menu Skeletons (loading state)
 
-   Only the two menus need a placeholder — they wait on an API request.
+   Only the two menus need a placeholder â€” they wait on an API request.
    The other Salla components (search, lang/currency, contacts) render
    their content synchronously and don't need a skeleton.
 
@@ -245,7 +249,7 @@ salla-user-menu{
   animation: header-skel-shimmer 1.4s ease-in-out infinite;
 }
 
-// ── Top-nav menu — pure CSS via pseudo-elements ─────────────────
+// â”€â”€ Top-nav menu â€” pure CSS via pseudo-elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Stencil hides every <salla-*> with `visibility:hidden` until the
 // `.hydrated` class is added (which restores visibility: inherit).
 // Override that for our pre-hydration state so the pseudo-element
@@ -266,7 +270,7 @@ salla-menu[topnav]:not(.hydrated) {
   &::after  { width: 50px; }
 }
 
-// ── Main menu — DOM seeded by NavigationMenu ────────────────────
+// â”€â”€ Main menu â€” DOM seeded by NavigationMenu â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 .main-menu-skel {
   @apply hidden lg:inline-flex items-center gap-4 mx-6 py-8;
 }
@@ -280,7 +284,7 @@ salla-menu[topnav]:not(.hydrated) {
 
 .header-skel-item--menu { height: 14px; width: 80px; }
 
-// ── Dark topnav variant — lift contrast on dark backgrounds ─────
+// â”€â”€ Dark topnav variant â€” lift contrast on dark backgrounds â”€â”€â”€â”€â”€
 .topnav-is-dark {
   .top-navbar salla-menu[topnav]:not(.hydrated)::before,
   .top-navbar salla-menu[topnav]:not(.hydrated)::after {
@@ -293,3 +297,4 @@ salla-menu[topnav]:not(.hydrated) {
     );
   }
 }
+
