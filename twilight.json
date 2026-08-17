@@ -1332,7 +1332,7 @@
             "image": "https://cdn.jsdelivr.net/gh/islamnashaat03/NasQ----Salla-theme-@main/public/images/component-previews/nasq-hero.png",
             "is_default": true,
             "fields": [
-                {"id":"background_image","type":"string","format":"image","label":"صورة الخلفية","required":true},
+                {"id":"background_image","type":"string","format":"image","label":"صورة الخلفية","value":"https://cdn.jsdelivr.net/gh/islamnashaat03/NasQ----Salla-theme-@main/public/images/component-previews/nasq-hero.png","required":true},
                 {"id":"overlay_color","type":"string","format":"color","label":"لون طبقة التعتيم","value":"#000000","required":true},
                 {"id":"overlay_opacity","type":"number","format":"integer","label":"شفافية طبقة التعتيم","value":38,"minimum":0,"maximum":90,"required":true},
                 {"id":"content_alignment","type":"items","format":"dropdown-list","label":"محاذاة المحتوى","selected":[{"label":"المنتصف","value":"center"}],"options":[{"label":"يمين","value":"flex-start"},{"label":"المنتصف","value":"center"},{"label":"يسار","value":"flex-end"}],"required":true},
@@ -1366,10 +1366,10 @@
             "fields": [
                 {"id":"eyebrow","type":"string","format":"text","label":"عنوان صغير","multilanguage":true,"value":"من نحن","required":false},
                 {"id":"title","type":"string","format":"text","label":"العنوان الرئيسي","multilanguage":true,"value":"حكاية نَسَق","required":true},
-                {"id":"text","type":"string","format":"textarea","label":"النص الطويل","multilanguage":true,"required":true},
+                {"id":"text","type":"string","format":"textarea","label":"النص الطويل","multilanguage":true,"value":"في نَسَق نختار كل تفصيلة بعناية لنقدم تجربة تسوق أنيقة تجمع بين الجودة والبساطة والذوق المعاصر.","required":true},
                 {"id":"button_text","type":"string","format":"text","label":"نص الزر","multilanguage":true,"value":"اعرفي المزيد","required":false},
                 {"id":"button_url","type":"string","format":"url","label":"رابط الزر","required":false},
-                {"id":"image","type":"string","format":"image","label":"الصورة","required":true},
+                {"id":"image","type":"string","format":"image","label":"الصورة","value":"https://cdn.jsdelivr.net/gh/islamnashaat03/NasQ----Salla-theme-@main/public/images/component-previews/about-us-split.png","required":true},
                 {"id":"image_position","type":"items","format":"dropdown-list","label":"مكان الصورة","selected":[{"label":"يسار المحتوى","value":"start"}],"options":[{"label":"يسار المحتوى","value":"start"},{"label":"يمين المحتوى","value":"end"}],"required":true},
                 {"id":"content_width","type":"number","format":"integer","label":"نسبة عرض المحتوى","value":50,"minimum":25,"maximum":75,"required":true},
                 {"id":"image_width","type":"number","format":"integer","label":"نسبة عرض الصورة","value":50,"minimum":25,"maximum":75,"required":true},
