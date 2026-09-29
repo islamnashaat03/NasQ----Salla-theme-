@@ -1,4 +1,5 @@
-<section class="nasq-split nasq-split--{{ component.image_position }} s-block">
+{% import 'components/nasq-value.twig' as nasq %}
+<section class="nasq-split nasq-split--{{ nasq.choice(component.image_position|default('start'), 'start') }} s-block">
   <div class="container nasq-split__grid">
     <figure class="nasq-split__media"><img src="{{ component.image }}" loading="lazy" decoding="async" width="900" height="760" alt="{{ component.title }}"></figure>
     <div class="nasq-split__copy">

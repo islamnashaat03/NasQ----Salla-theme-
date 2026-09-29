@@ -1,15 +1,16 @@
 {
   "name": "nasq-salla-theme",
-  "version": "1.358.1",
+  "version": "0.1.0",
   "description": "A mobile-first Salla fashion theme for abaya and modest-wear stores",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/islamnashaat03/NasQ----Salla-theme-.git"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "pnpm validate && pnpm production",
+    "validate": "node scripts/validate-theme.mjs && node scripts/audit-templates.mjs",
     "production": "webpack --mode production",
     "prod": "webpack --mode production",
     "development": "webpack --mode development",
@@ -55,4 +56,3 @@
     "node": "^22.18.0 || >=24.11.0"
   }
 }
-

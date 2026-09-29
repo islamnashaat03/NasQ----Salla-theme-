@@ -1,0 +1,17 @@
+{% set selected_ids = component.products|default([])|map(product => product.id is defined ? product.id : product) %}
+<section class="nasq-products-section nasq-products-section--grid s-block" aria-labelledby="nasq-products-grid-{{ position }}">
+  <div class="container">
+    <header class="nasq-section-heading">
+      <h2 id="nasq-products-grid-{{ position }}">{{ component.title }}</h2>
+      {% if component.subtitle %}<p>{{ component.subtitle }}</p>{% endif %}
+    </header>
+    {% if selected_ids|length %}
+      <salla-products-list
+        data-testid="store-home-nasq-products-grid"
+        source="selected"
+        source-value="{{ selected_ids|json_encode|e('html_attr') }}"
+        limit="{{ selected_ids|length }}">
+      </salla-products-list>
+    {% endif %}
+  </div>
+</section>

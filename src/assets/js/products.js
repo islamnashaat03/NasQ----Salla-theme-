@@ -33,10 +33,11 @@ class Products extends BasePage {
             trigger = app.element("a[href='#filters-menu']"),
             close = app.element("button.close-filters");
 
-        if (!filters) {
+        if (!filters || !trigger || !close) {
             return;
         }
-        filters = new MobileMenu(filters, "(max-width: 1024px)", "( slidingSubmenus: false)");
+        const filterBreakpoint = document.body.classList.contains('nasq-archive-offcanvas') ? 'all' : '(max-width: 1023px)';
+        filters = new MobileMenu(filters, filterBreakpoint, "( slidingSubmenus: false)");
         const drawer = filters.offcanvas({ position: salla.config.get('theme.is_rtl') ? "right" : 'left' });
         trigger.addEventListener('click', event => {
             document.body.classList.add('filters-opened');

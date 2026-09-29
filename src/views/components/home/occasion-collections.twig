@@ -1,6 +1,9 @@
 <section class="nasq-occasions s-block" aria-labelledby="occasions-{{ position }}">
   <div class="container">
-    <header class="nasq-section-heading"><h2 id="occasions-{{ position }}">{{ component.title }}</h2></header>
+    <header class="nasq-section-heading">
+      <h2 id="occasions-{{ position }}">{{ component.title }}</h2>
+      {% if component.subtitle %}<p>{{ component.subtitle }}</p>{% endif %}
+    </header>
     <div class="nasq-occasions__grid">
       {% for item in component.items %}
         <a class="nasq-occasion" href="{{ item.url }}">

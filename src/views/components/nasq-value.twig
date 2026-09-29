@@ -1,0 +1,6 @@
+{# Normalize single-select scalar, option object, or array values. #}
+{% macro choice(input, fallback) %}
+  {%- set value = input is iterable ? (input.value is defined ? input.value : input|first) : input -%}
+  {%- set value = value is iterable ? value.value|default(fallback) : value -%}
+  {{- value|default(fallback) -}}
+{% endmacro %}

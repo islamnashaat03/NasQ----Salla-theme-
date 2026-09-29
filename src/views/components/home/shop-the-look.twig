@@ -5,11 +5,15 @@
         <img src="{{ component.image }}" loading="lazy" decoding="async" width="900" height="1125" alt="{{ component.title }}">
       </figure>
       <div class="nasq-lookbook__content">
-        <span class="nasq-eyebrow">{{ component.subtitle }}</span>
+        {% if component.subtitle %}<span class="nasq-eyebrow">{{ component.subtitle }}</span>{% endif %}
         <h2 id="lookbook-{{ position }}">{{ component.title }}</h2>
         {% if component.products|length %}
           <div class="nasq-lookbook__products">
-            <salla-products-list source="selected" source-value="{{ component.products|map(p => p.id)|join(',') }}" limit="4"></salla-products-list>
+            <salla-products-list
+              source="selected"
+              source-value="{{ component.products|default([])|map(p => p.id is defined ? p.id : p)|json_encode|e('html_attr') }}"
+              limit="{{ component.products|length }}">
+            </salla-products-list>
           </div>
         {% endif %}
         {% if component.link %}

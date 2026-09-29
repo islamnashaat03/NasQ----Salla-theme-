@@ -25,9 +25,9 @@
 
   @media (max-width: 640px) {
     .s-search-results{
-      @apply w-screen max-w-[100vw] rtl:-left-2.5 ltr:-right-2.5; 
+      @apply w-screen max-w-[100vw] rtl:-left-2.5 ltr:-right-2.5;
     }
-  } 
+  }
 
   .topnav-is-dark & {
     @apply bg-dark text-gray-300;
@@ -64,7 +64,7 @@
 /* Main Nav */
 .main-nav-container {
   @apply min-h-[68px] lg:min-h-[84px];
-  
+
   // Custom background Color
   .has-bg &,
   .has-bg & .sub-menu{
@@ -146,11 +146,7 @@
   @apply items-center flex my-2 lg:my-0;
 
   img {
-    width: min(var(--nasq-logo-width, 175px), 42vw);
-    height: var(--nasq-logo-height, 48px);
-    max-width: none;
-    max-height: none;
-    object-fit: contain;
+    @apply w-auto max-h-12 max-w-[100px] xs:max-w-[170px];
   }
 }
 

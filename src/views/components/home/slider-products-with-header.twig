@@ -28,7 +28,7 @@
             data-testid="store-home-slider-header-products"
             {% if component.products|length %}
               source="selected" 
-              source-value="[{{ component.products|map((product) => product.id)|join(',') }}]" 
+              source-value="{{ component.products|default([])|map(product => product.id is defined ? product.id : product)|json_encode|e('html_attr') }}"
             {% endif %}
             {% if display_all != '' and  display_all != '#' %}
                 display-all-url="{{display_all}}" 

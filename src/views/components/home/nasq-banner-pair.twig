@@ -1,0 +1,23 @@
+<section class="nasq-banners nasq-banners--pair s-block">
+  <div class="container">
+    {% if component.title or component.subtitle %}
+      <header class="nasq-section-heading">
+        {% if component.title %}<h2>{{ component.title }}</h2>{% endif %}
+        {% if component.subtitle %}<p>{{ component.subtitle }}</p>{% endif %}
+      </header>
+    {% endif %}
+    <div class="nasq-banners__pair nasq-banners__pair--{{ component.banners|length }}">
+      {% for index, banner in component.banners %}
+        <a class="nasq-banner-card" href="{{ banner.url|default('#') }}" aria-label="{{ banner.title|default('banner-' ~ index) }}">
+          <img src="{{ banner.image }}" loading="lazy" width="1200" height="520" alt="{{ banner.title|default(store.name) }}">
+          {% if banner.title or banner.text %}
+            <span class="nasq-banner-card__content">
+              {% if banner.title %}<strong>{{ banner.title }}</strong>{% endif %}
+              {% if banner.text %}<small>{{ banner.text }}</small>{% endif %}
+            </span>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

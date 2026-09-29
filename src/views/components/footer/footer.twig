@@ -1,9 +1,11 @@
-<footer data-testid="store-footer" class="store-footer">
+{% import 'components/nasq-value.twig' as nasq %}
+{% set footer_logo_position = nasq.choice(theme.settings.get('nasq_footer_logo_position', 'start'), 'start')|trim %}
+<footer data-testid="store-footer" class="store-footer nasq-footer-logo--{{ footer_logo_position }}">
 	<div aria-label="footer" class="store-footer__inner">
-		<div class="container grid grid-col-1 lg:grid-cols-6 gap-8 lg:gap-6">
-			<div class="lg:col-span-2 rtl:lg:pl-20 ltr:lg:pr-20">
-				<a href="{{ link('/') }}" class="flex items-center m-0">
-					<h3>{{store.name}}</h3>
+		<div class="container grid grid-cols-1 lg:grid-cols-6 gap-8 lg:gap-6">
+			<div class="store-footer__brand lg:col-span-2 rtl:lg:pl-20 ltr:lg:pr-20">
+				<a href="{{ link('/') }}" class="store-footer__logo m-0" aria-label="{{ store.name }}">
+					<img src="{{ store.logo|cdn(220) }}" width="175" height="80" loading="lazy" alt="{{ store.name }} logo">
 				</a>
 				{% if store.description %}
 					<div class="max-w-sm leading-6 mb-6">
@@ -67,6 +69,5 @@
 		<span class="text-sm copyright-text">{% hook copyright %}</span>
 		<salla-payments data-testid="store-footer-payments"></salla-payments>
 	</div>
-</div>
 
 <span class="hidden bottom-2 rtl:pl-24 ltr:pr-24 md:grid-cols-3 opacity-40"></span></footer>

@@ -1,6 +1,8 @@
 
 .store-footer {
   @apply relative bg-darker text-white mt-8 sm:mt-16;
+  background: var(--nasq-footer-bg, #0f172a);
+  color: var(--nasq-footer-text, #e5e7eb);
 
   a{
     @apply transition-opacity hover:opacity-75;
@@ -8,11 +10,37 @@
 
   &__inner{
     @apply bg-dark py-8 lg:py-16 border-b border-dashed border-b-white/10;
+    background: var(--nasq-footer-bg, #172c2b);
   }  
 
   h3{
     @apply text-lg font-bold mb-3 lg:mb-5;
+    color: var(--nasq-footer-heading, #fff);
   }
+
+  &__logo {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    img {
+      width: auto;
+      max-width: 175px;
+      height: 80px;
+      object-fit: contain;
+    }
+  }
+
+  i,
+  .social-link,
+  .s-contacts-icon,
+  .s-social-link a {
+    color: var(--nasq-footer-icon, currentColor);
+  }
+
+  &.nasq-footer-logo--start .store-footer__logo { justify-content: flex-start; }
+  &.nasq-footer-logo--center .store-footer__logo { justify-content: center; }
+  &.nasq-footer-logo--end .store-footer__logo { justify-content: flex-end; }
 
   .social-link {
     @apply border rounded-full w-8 h-8 justify-center flex items-center hover:opacity-75 transition duration-300 text-sm
@@ -27,10 +55,12 @@
   }
 
   .footer-is-light & {
-    @apply bg-gray-50 text-gray-700;
+    background: var(--nasq-footer-bg, #f9fafb);
+    color: var(--nasq-footer-text, #374151);
 
     .store-footer__inner {
-      @apply bg-gray-100 border-b-gray-200;
+      @apply border-b-gray-200;
+      background: var(--nasq-footer-bg, #f3f4f6);
     }
 
     .social-link {
@@ -45,5 +75,5 @@
 
 
 .copyright-text p{
-  @apply text-gray-700;
+  color: inherit;
 }

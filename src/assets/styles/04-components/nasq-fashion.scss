@@ -49,48 +49,10 @@
 }
 
 body { color: var(--nasq-ink); background: #fffdfb; }
-.s-block { content-visibility: auto; contain-intrinsic-size: 1px 720px; }
 .nasq-eyebrow { color: var(--nasq-rose); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .nasq-section-heading { margin-bottom: 1.5rem; text-align: center; }
 .nasq-section-heading h2, .nasq-lookbook h2 { font-size: clamp(1.55rem, 3vw, 2.6rem); font-weight: 700; line-height: 1.3; }
-
-.nasq-hero { position: relative; min-height: 100vh; min-height: 100dvh; display: grid; overflow: hidden; isolation: isolate; background: #172c2b var(--nasq-hero-image) center/cover no-repeat; }
-.nasq-hero__overlay { position: absolute; inset: 0; z-index: -1; background: var(--nasq-hero-overlay, #000); opacity: var(--nasq-hero-overlay-opacity, .38); }
-.nasq-hero__inner { min-height: 100vh; min-height: 100dvh; display: flex; align-items: center; justify-content: var(--nasq-hero-align, center); padding-block: clamp(6rem, 12vh, 10rem) 3rem; }
-.nasq-hero__content { width: min(760px, 100%); text-align: center; }
-.nasq-hero__content h2 { margin: 0; color: var(--nasq-hero-title-color, #fff); font-size: clamp(2rem, calc(var(--nasq-hero-title-size, 64px) * .72), var(--nasq-hero-title-size, 64px)); font-weight: 800; line-height: 1.12; text-wrap: balance; }
-.nasq-hero__content p { max-width: 650px; margin: 1.25rem auto 0; color: var(--nasq-hero-text-color, #fff); font-size: clamp(1rem, calc(var(--nasq-hero-text-size, 20px) * .9), var(--nasq-hero-text-size, 20px)); line-height: 1.8; }
-.nasq-hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: 2rem; }
-.nasq-hero__button { min-width: 150px; padding: .9rem 1.5rem; border: 1px solid transparent; border-radius: 999px; font-weight: 700; text-align: center; transition: color .25s ease, background-color .25s ease, border-color .25s ease, transform .25s ease; }
-.nasq-hero__button:hover { transform: translateY(-2px); }
-.nasq-hero__button--one { color: var(--nasq-btn1-color, #172c2b); background: var(--nasq-btn1-bg, #fff); }
-.nasq-hero__button--one:hover { color: var(--nasq-btn1-hover-color, #fff); background: var(--nasq-btn1-hover-bg, #172c2b); }
-.nasq-hero__button--two { color: var(--nasq-btn2-color, #fff); background: var(--nasq-btn2-bg, transparent); border-color: currentColor; }
-.nasq-hero__button--two:hover { color: var(--nasq-btn2-hover-color, #172c2b); background: var(--nasq-btn2-hover-bg, #fff); }
-
-.nasq-about { padding: clamp(3rem, 7vw, 7rem) 0; background: var(--nasq-about-bg, #f7f3ed); }
-.nasq-about__grid { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 5rem); align-items: stretch; }
-.nasq-about__content { display: flex; flex-direction: column; justify-content: center; }
-.nasq-about__content h2 { margin: .65rem 0 1.25rem; color: var(--color-primary); font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 800; line-height: 1.2; text-wrap: balance; }
-.nasq-about__text { color: #4b5563; font-size: 1.05rem; line-height: 2; }
-.nasq-about__text p + p { margin-top: .85rem; }
-.nasq-about__content .nasq-button { align-self: flex-start; margin-top: 1.75rem; }
-.nasq-about__media { min-height: 360px; overflow: hidden; border-radius: clamp(1rem, 2vw, 1.75rem); background: #e7dfd4; }
-.nasq-about__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-.nasq-about__media:hover img { transform: scale(1.025); }
-
-@media (min-width: 768px) {
-  .nasq-hero--flex-start .nasq-hero__content { text-align: start; }
-  .nasq-hero--flex-start .nasq-hero__content p { margin-inline: 0; }
-  .nasq-hero--flex-start .nasq-hero__actions { justify-content: flex-start; }
-  .nasq-hero--flex-end .nasq-hero__content { text-align: end; }
-  .nasq-hero--flex-end .nasq-hero__content p { margin-inline-start: auto; margin-inline-end: 0; }
-  .nasq-hero--flex-end .nasq-hero__actions { justify-content: flex-end; }
-  .nasq-about__grid { flex-direction: row; }
-  .nasq-about__content { flex: 0 1 var(--nasq-about-content, 50%); }
-  .nasq-about__media { flex: 0 1 var(--nasq-about-image, 50%); }
-  .nasq-about--image-start .nasq-about__media { order: -1; }
-}
+.nasq-section-heading p { max-width: 42rem; margin: .55rem auto 0; color: #77706b; line-height: 1.7; }
 
 .nasq-lookbook { padding: clamp(2.5rem, 7vw, 6rem) 0; background: var(--nasq-sand); }
 .nasq-lookbook__grid { display: grid; gap: 2rem; align-items: center; }
@@ -144,6 +106,29 @@ body { color: var(--nasq-ink); background: #fffdfb; }
 .nasq-visual-card strong { font-size:1.2rem; }
 .nasq-visual-card small { margin-top:.25rem; opacity:.85; }
 
+.nasq-products-section { padding: clamp(2.5rem, 6vw, 5rem) 0; }
+.nasq-products-section--slider { overflow: hidden; background: var(--nasq-sand); }
+
+.nasq-banners { padding: clamp(2rem, 5vw, 4rem) 0; }
+.nasq-banners__pair { display: grid; gap: 1rem; }
+.nasq-banner-card { position: relative; display: block; overflow: hidden; min-height: 190px; border-radius: var(--s-radius); background: var(--nasq-sand); isolation: isolate; }
+.nasq-banner-card::after { content: ''; position: absolute; inset: 35% 0 0; z-index: 1; background: linear-gradient(transparent, rgba(18,14,12,.7)); pointer-events: none; }
+.nasq-banner-card img { width: 100%; height: 100%; min-height: 190px; object-fit: cover; transition: transform .55s ease; }
+.nasq-banner-card:hover img { transform: scale(1.025); }
+.nasq-banner-card__content { position: absolute; z-index: 2; inset-inline: 1.25rem; bottom: 1.1rem; color: #fff; }
+.nasq-banner-card__content strong, .nasq-banner-card__content small { display: block; }
+.nasq-banner-card__content strong { font-size: clamp(1.1rem, 2.5vw, 1.65rem); }
+.nasq-banner-card__content small { margin-top: .25rem; opacity: .88; }
+.nasq-banners--slider .nasq-banner-card { min-height: 220px; }
+
+.nasq-testimonials { padding: clamp(3rem, 7vw, 6rem) 0; background: var(--nasq-sand); }
+.nasq-testimonial-card { height: auto; padding: clamp(1.35rem, 3vw, 2.25rem); border: 1px solid var(--nasq-line); border-radius: var(--s-radius); background: #fff; box-shadow: 0 18px 45px rgba(34,29,26,.06); }
+.nasq-testimonial-card__quote { display: block; margin-bottom: 1rem; color: var(--nasq-rose); font-size: 1.7rem; }
+.nasq-testimonial-card blockquote { min-height: 5.5rem; margin: 1rem 0 1.35rem; color: #514943; font-size: 1rem; line-height: 1.9; }
+.nasq-testimonial-card__customer { display: flex; align-items: center; gap: .8rem; }
+.nasq-testimonial-card__customer img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+.nasq-testimonial-card__customer strong { color: var(--nasq-ink); }
+
 .container--product-details .main-content { border-radius: 1rem; }
 .container--product-details .product-form, .container--product-details .main-content > section { border-color: var(--nasq-line); }
 .details-slider { border-radius: 1rem; background: #f6f3ef; }
@@ -170,9 +155,33 @@ salla-product-options { --color-primary: var(--nasq-ink); }
   .nasq-visual-cards--3 .nasq-visual-cards__grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
   .nasq-visual-cards--4 .nasq-visual-cards__grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
   .nasq-visual-card { min-height: 440px; }
+  .nasq-banners__pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nasq-banners__pair--1 { grid-template-columns: 1fr; }
+  .nasq-banner-card, .nasq-banner-card img { min-height: 300px; }
+  .nasq-banners--slider .nasq-banner-card { min-height: 360px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nasq-lookbook__visual img, .nasq-occasion img, .nasq-visual-card img { transition: none; }
+  .nasq-lookbook__visual img, .nasq-occasion img, .nasq-visual-card img, .nasq-banner-card img { transition: none; }
   .nasq-marquee__track { animation: none; }
+}
+
+/* Keep artwork visible and give carousel slides a measurable width. */
+.nasq-banners--slider .swiper-slide { width: 100%; }
+.nasq-banners .nasq-banner-card { min-height: 0; }
+.nasq-banners .nasq-banner-card img { display: block; height: auto; min-height: 0; object-fit: contain; }
+.nasq-banners--slider .nasq-banner-card img { aspect-ratio: 5 / 2; }
+.nasq-banners__pair .nasq-banner-card img { aspect-ratio: 2 / 1; }
+.nasq-testimonials .nasq-testimonial-card { width: min(85vw, 380px); }
+
+.nasq-preset-modern { --nasq-ink: #172c2b; --nasq-sand: #f1f5f4; --nasq-rose: #387f75; }
+.nasq-preset-luxury { --nasq-ink: #241c25; --nasq-sand: #f7f2e8; --nasq-rose: #987333; }
+.nasq-preset-catalog .nasq-products-section { padding-block: 2rem; }
+@media (min-width: 1024px) {
+  .nasq-archive-top .container--products-list { flex-direction: column; }
+  .nasq-archive-top #filters-menu { position: static; width: 100%; margin-bottom: 1.5rem; }
+  .nasq-archive-top .container--products-list > .main-content,
+  .nasq-archive-offcanvas .container--products-list > .main-content { margin-inline: 0; }
+  .nasq-archive-offcanvas .filters-trigger { display: inline-flex; }
+  .nasq-archive-offcanvas.filters-opened .close-filters { display: block; position: fixed; inset-inline-end: 1rem; top: 1rem; z-index: 999999; }
 }

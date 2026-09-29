@@ -1,4 +1,6 @@
-<section class="nasq-visual-cards s-block nasq-visual-cards--{{ component.columns }}">
+{% import 'components/nasq-value.twig' as nasq %}
+{% set columns = nasq.choice(component.columns|default(3), 3)|trim %}
+<section class="nasq-visual-cards s-block nasq-visual-cards--{{ columns in ['2', '3', '4'] ? columns : '3' }}">
   <div class="container">
     {% if component.title %}<header class="nasq-section-heading"><h2>{{ component.title }}</h2></header>{% endif %}
     <div class="nasq-visual-cards__grid">
