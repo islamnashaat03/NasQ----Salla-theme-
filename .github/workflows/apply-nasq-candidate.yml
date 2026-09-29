@@ -1,0 +1,29 @@
+name: Apply NASQ demo candidate
+
+on:
+  push:
+    branches:
+      - codex/nasq-demo-candidate
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor == 'islamnashaat03'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply tested NASQ candidate
+        if: hashFiles('nasq-candidate.patch.gz.b64') != ''
+        shell: bash
+        run: |
+          base64 -d nasq-candidate.patch.gz.b64 | gunzip > /tmp/nasq-candidate.patch
+          git apply --index /tmp/nasq-candidate.patch
+          git rm nasq-candidate.patch.gz.b64
+          git config user.name 'islamnashaat03'
+          git config user.email 'islamnashaat03@users.noreply.github.com'
+          git commit -m 'fix: prepare NASQ components for Salla demo'
+          git push
