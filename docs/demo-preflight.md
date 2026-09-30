@@ -34,3 +34,14 @@ Next: upload the candidate to a separate codex/nasq-builder-test branch, select 
 - CLI now waits for explicit authorization on the official Partners auth/cli page; no authorization was granted by the agent.
 - UI feature tests remain pending. Portal schema synchronization is verified, storefront behavior is not.
 - Official CLI preview reference: https://docs.salla.dev/422776m0
+
+## CLI authentication and watcher verification
+
+- Salla CLI authentication succeeded after renewed authorization; linked GitHub account, theme ID and repository checks passed.
+- Added watch script using the official Twilight WatcherPlugin and webpack. Contract validation runs before compilation. Installed a local pnpm launcher under ignored .tools.
+- Production validation passes: 15 review records, 55 settings, 3 components.
+- CLI preview starts asset server at localhost:8000 and websocket at localhost:8001; official watcher connects and webpack compiles successfully.
+- Active test draft: 1088349143, theme 1850944111, store 1592857134 (nasq-demo-new).
+- Storefront still reports 422 / src/views/pages/index.twig Not Found. Custom home components are absent from the draft editor.
+- IMPORTANT: official `salla theme sync` returns process status 0 even when the upload fails. Initial helper progress lines were not evidence of successful uploads. Capturing its response confirmed an error in Arabic (unexpected error) for homepage upload; absolute file paths produce the same response.
+- Synchronization into the draft remains failed; no UI features have passed demo tests. Portal schema synchronization and local watcher startup are verified separately.
