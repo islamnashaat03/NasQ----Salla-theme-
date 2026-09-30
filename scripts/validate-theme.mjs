@@ -12,6 +12,9 @@ const required = [
 
 await Promise.all(required.map((file) => access(file)));
 const config = JSON.parse(await readFile('twilight.json', 'utf8'));
+const manifest = JSON.parse(await readFile('package.json', 'utf8'));
+if (!config.version || config.version !== manifest.version) throw new Error('Twilight version must match package.json.');
+if (!config.theme_name || !config.repo_url || config.repo_url !== config.repository) throw new Error('Official theme name and repository metadata are required.');
 const builtInHomeFeatures = config.features.filter((feature) => feature.startsWith('component-'));
 if (builtInHomeFeatures.length) throw new Error(`Built-in home components must stay disabled during construction: ${builtInHomeFeatures.join(', ')}`);
 const ids = config.settings.map((setting) => setting.id).filter(Boolean);
