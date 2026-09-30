@@ -1,0 +1,17 @@
+{% set layout = theme.settings.get('footer_layout', 'columns') %}
+{% set logo_source = theme.settings.get('footer_logo_source', 'store') %}
+{% set custom_logo = logo_source == 'custom' ? theme.settings.get('footer_custom_logo') : null %}
+<footer class="nasq-footer nasq-footer--{{ layout }}" style="--footer-bg:{{ theme.settings.get('footer_background', '#15201e') }};--footer-title:{{ theme.settings.get('footer_title_color', '#ffffff') }};--footer-text:{{ theme.settings.get('footer_text_color', '#b8c4bf') }};--footer-link:{{ theme.settings.get('footer_link_color', '#eef5f1') }};--footer-icon:{{ theme.settings.get('footer_icon_color', '#ffffff') }};--footer-border:{{ theme.settings.get('footer_border_color', '#34403d') }};--footer-pad:{{ theme.settings.get('footer_padding_top', 64) }}px;--footer-gap:{{ theme.settings.get('footer_columns_gap', 36) }}px;--footer-logo-width:{{ theme.settings.get('footer_logo_width', 150) }}px">
+  <div class="nasq-container nasq-footer__grid">
+    <section class="nasq-footer__brand">
+      <a class="nasq-logo nasq-logo--footer" href="{{ store.url }}">{% if logo_source == 'text' %}<strong>{{ store.name }}</strong>{% else %}<img src="{{ custom_logo ?: store.logo }}" alt="{{ store.name }}">{% endif %}</a>
+      <p>{{ theme.settings.get('footer_description', store.description) }}</p>
+    </section>
+    {% if layout != 'compact' %}
+      {% if theme.settings.get('footer_show_menu', true) %}<section><h2>{{ trans('nasq.footer.important_links') }}</h2><salla-menu source="footer"></salla-menu></section>{% endif %}
+      {% if theme.settings.get('footer_show_contacts', true) %}<section><h2>{{ trans('nasq.footer.contact_us') }}</h2>{% if store.contacts.email %}<a href="mailto:{{ store.contacts.email }}">{{ store.contacts.email }}</a>{% endif %}{% if store.contacts.mobile %}<a href="tel:{{ store.contacts.mobile }}">{{ store.contacts.mobile }}</a>{% endif %}</section>{% endif %}
+    {% endif %}
+    {% if theme.settings.get('footer_show_social', true) %}<div class="nasq-social">{% for platform, url in store.social %}{% if url %}<a href="{{ url }}" target="_blank" rel="noopener" aria-label="{{ platform }}"><i class="sicon-{{ platform }}"></i></a>{% endif %}{% endfor %}</div>{% endif %}
+  </div>
+  <div class="nasq-footer__bottom nasq-container"><span>{{ theme.settings.get('footer_copyright') ?: '© ' ~ ('now'|date('Y')) ~ ' ' ~ store.name }}</span>{% if theme.settings.get('footer_show_payments', true) %}<salla-payments></salla-payments>{% endif %}</div>
+</footer>

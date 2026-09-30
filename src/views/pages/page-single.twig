@@ -1,0 +1,14 @@
+{% extends 'layouts.master' %}
+
+{% block content %}
+  {% if page.type == 'customised' %}
+    {% hook 'information_page.information_page' %}
+  {% else %}
+    <section class="nasq-page-head"><div class="nasq-container"><salla-breadcrumb></salla-breadcrumb><h1>{{ page.title }}</h1></div></section>
+    <article class="nasq-container nasq-prose">
+      {{ page.content }}
+      <salla-comments item-id="{{ page.id }}" type="page"></salla-comments>
+    </article>
+  {% endif %}
+{% endblock %}
+

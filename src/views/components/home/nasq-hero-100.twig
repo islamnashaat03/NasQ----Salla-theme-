@@ -1,0 +1,19 @@
+{% set background_type = component.background_type ?: 'image' %}
+<section class="nasq-hero100 nasq-hero100--{{ background_type }} nasq-hero100--h-{{ component.vertical_align ?: 'center' }} nasq-hero100--x-{{ component.content_align ?: 'center' }}" style="--hero-height:{{ component.height ?: 720 }}px;--hero-mobile-height:{{ component.mobile_height ?: 560 }}px;--hero-color:{{ component.text_color ?: '#ffffff' }};--hero-overlay:{{ component.overlay_color ?: '#000000' }};--hero-opacity:{{ (component.overlay_opacity ?: 40) / 100 }};--hero-content-width:{{ component.content_width ?: 760 }}px">
+  <div class="nasq-hero100__media" aria-hidden="true">
+    {% if background_type == 'video' and component.background_video %}
+      <video playsinline muted {{ component.autoplay ? 'autoplay' : '' }} {{ component.loop ? 'loop' : '' }} poster="{{ component.video_poster }}"><source src="{{ component.background_video }}"></video>
+    {% elseif background_type == 'image-slider' and component.image_slides %}
+      <salla-slider id="nasq-hero-images-{{ component.id }}" type="carousel" slides-per-view="1" pagination {{ component.autoplay ? 'auto-play' : '' }} {{ component.loop ? 'loop' : '' }}><div slot="items">{% for slide in component.image_slides %}<div class="swiper-slide"><img src="{{ slide.image }}" alt="{{ slide.alt }}" loading="{{ loop.first ? 'eager' : 'lazy' }}"></div>{% endfor %}</div></salla-slider>
+    {% elseif background_type == 'video-slider' and component.video_slides %}
+      <salla-slider id="nasq-hero-videos-{{ component.id }}" type="carousel" slides-per-view="1" pagination {{ component.autoplay ? 'auto-play' : '' }} {{ component.loop ? 'loop' : '' }}><div slot="items">{% for slide in component.video_slides %}<div class="swiper-slide"><video playsinline muted {{ component.autoplay ? 'autoplay' : '' }} {{ component.loop ? 'loop' : '' }} poster="{{ slide.poster }}"><source src="{{ slide.video }}"></video></div>{% endfor %}</div></salla-slider>
+    {% elseif component.background_image %}<img src="{{ component.background_image }}" alt="" loading="eager">{% endif %}
+  </div>
+  <div class="nasq-hero100__overlay"></div>
+  <div class="nasq-container nasq-hero100__inner"><div class="nasq-hero100__content">
+    {% if component.eyebrow %}<span class="nasq-hero100__eyebrow">{{ component.eyebrow }}</span>{% endif %}
+    <h1>{{ component.title }}</h1>
+    {% if component.description %}<p>{{ component.description }}</p>{% endif %}
+    {% if component.buttons %}<div class="nasq-hero100__buttons">{% for button in component.buttons %}<a class="nasq-hero100__button nasq-hero100__button--{{ button.style ?: 'solid' }}" href="{{ button.url }}">{{ button.label }}</a>{% endfor %}</div>{% endif %}
+  </div></div>
+</section>

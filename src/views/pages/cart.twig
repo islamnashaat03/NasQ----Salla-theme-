@@ -1,0 +1,40 @@
+{% extends 'layouts.master' %}
+
+{% block content %}
+  <section class="nasq-page-head"><div class="nasq-container">{% component breadcrumbs %}<h1>{{ page.title|striptags }}</h1></div></section>
+  <div class="nasq-container nasq-cart-page">
+    <div class="nasq-cart">
+      <section class="nasq-cart__items">
+        {% hook 'cart:items.start' %}
+        {% for item in cart.items %}
+          <form class="nasq-cart-item" id="cart-item-{{ item.id }}" onchange="salla.form.onChange('cart.updateItem', event)">
+            <input type="hidden" name="id" value="{{ item.id }}">
+            <a class="nasq-cart-item__image" href="{{ item.url }}"><img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" loading="lazy"></a>
+            <div class="nasq-cart-item__body">
+              <a href="{{ item.url }}"><h2>{{ item.product.name }}</h2></a>
+              {% if item.options %}<ul class="nasq-cart-item__options">{% for option in item.options %}<li>{{ option.name }}: {{ option.value.name }}</li>{% endfor %}</ul>{% endif %}
+              <div class="nasq-cart-item__controls">
+                {% if item.is_hidden_quantity %}<input type="hidden" name="quantity" value="{{ item.quantity }}"><span>{{ item.quantity }}</span>{% else %}<salla-quantity-input cart-item-id="{{ item.id }}" name="quantity" value="{{ item.quantity }}" max="{{ item.max_quantity }}"></salla-quantity-input>{% endif %}
+                <strong>{{ item.total|money }}</strong>
+              </div>
+            </div>
+            <salla-button type="button" shape="icon" color="danger" aria-label="{{ trans('nasq.cart.remove') }}" onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#cart-item-{{ item.id }}').remove())"><i class="sicon-trash"></i></salla-button>
+          </form>
+        {% else %}
+          <div class="nasq-empty-state"><i class="sicon-shopping-bag"></i><h2>{{ trans('nasq.cart.empty') }}</h2><a class="nasq-button" href="{{ links.products }}">{{ trans('nasq.cart.continue_shopping') }}</a></div>
+        {% endfor %}
+        {% hook 'cart:items.end' %}
+      </section>
+
+      {% if cart.items|length %}
+        <aside class="nasq-cart__summary">
+          {% hook 'cart:summary.start' %}
+          {% if store.settings.cart.apply_coupon_enabled %}{% hook 'cart:coupon.start' %}<salla-cart-coupons></salla-cart-coupons>{% hook 'cart:coupon.end' %}{% endif %}
+          {% hook 'cart:summary-card.start' %}<salla-cart-summary-card></salla-cart-summary-card>{% hook 'cart:summary-card.end' %}
+          {% hook 'cart:summary.end' %}
+        </aside>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+

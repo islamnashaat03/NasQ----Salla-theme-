@@ -1,0 +1,2 @@
+<section class="nasq-section"><div class="nasq-container">{% if component.title %}<h2 class="nasq-section__title">{{ component.title }}</h2>{% endif %}<div class="nasq-features">{% for item in component.items %}<article class="nasq-feature">{% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}<div><h3>{{ item.title }}</h3>{% if item.text %}<p>{{ item.text }}</p>{% endif %}</div></article>{% endfor %}</div></div></section>
+

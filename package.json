@@ -1,0 +1,19 @@
+{
+  "name": "nasq-salla-theme",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "NASQ — an independent, configurable Salla Twilight theme.",
+  "scripts": {
+    "validate": "node scripts/validate-salla-contract.mjs && node scripts/validate-theme.mjs",
+    "build": "node scripts/build.mjs",
+    "production": "npm run validate && npm run build"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@salla.sa/twilight": "2.14.583",
+    "@salla.sa/twilight-components": "2.14.583"
+  }
+}

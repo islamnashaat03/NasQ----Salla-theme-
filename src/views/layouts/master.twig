@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="{{ language.code }}" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% hook 'head:start' %}
+  {% hook head %}
+  {% block styles %}{% endblock %}
+  <link rel="stylesheet" href="{{ 'app.css'|asset }}">
+  {% if theme.font.path %}<link rel="stylesheet" href="{{ theme.font.path|cdn }}">{% endif %}
+  <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}">
+  <style>
+    :root {
+      --nasq-primary: {{ theme.color.primary }};
+      --nasq-on-primary: {{ theme.color.reverse_text }};
+      --nasq-radius: {{ theme.settings.get('nasq_radius', '16px') }};
+      --nasq-container: {{ theme.settings.get('nasq_container', '1280px') }};
+      --nasq-font: '{{ theme.font.name }}', system-ui, sans-serif;
+    }
+  </style>
+  {% hook 'head:end' %}
+</head>
+<body id="app" class="nasq-theme">
+  {% hook 'body:start' %}
+  {% component 'header.header' %}
+  <main id="main-content" class="nasq-main" role="main">
+    {% block content %}{% endblock %}
+  </main>
+  {% component 'footer.footer' %}
+  {% hook 'body:end' %}
+  <salla-search></salla-search>
+  <salla-login-modal></salla-login-modal>
+  <salla-localization-modal></salla-localization-modal>
+  <script defer src="{{ 'app.js'|asset }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

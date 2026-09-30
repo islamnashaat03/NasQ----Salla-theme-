@@ -1,0 +1,19 @@
+{% extends 'layouts.master' %}
+
+{% block content %}
+  {% hook 'thank-you:start' %}
+  <section class="nasq-thank-you">
+    <div class="nasq-container nasq-thank-you__card">
+      <div class="nasq-thank-you__icon"><i class="sicon-check-circle"></i></div>
+      <span>{{ trans('nasq.thank_you.eyebrow') }}</span>
+      <h1>{{ trans('nasq.thank_you.title') }}</h1>
+      <p>{{ trans('nasq.thank_you.order_reference') }} <strong>#{{ order.reference_id }}</strong></p>
+      <salla-button onclick="salla.order.show({order_id:'{{ order.id }}', url:'{{ order.url }}'})">{{ trans('nasq.thank_you.order_details') }}</salla-button>
+      {% if order.instructions %}<div class="nasq-thank-you__instructions">{{ order.instructions|striptags }}</div>{% endif %}
+      {% hook 'thank-you:items.start' %}
+      {% hook 'thank-you:items.end' %}
+    </div>
+  </section>
+  {% hook 'thank-you:end' %}
+{% endblock %}
+

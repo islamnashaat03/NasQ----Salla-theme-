@@ -1,0 +1,23 @@
+{% extends 'layouts.master' %}
+
+{% block content %}
+  <section class="nasq-page-head">
+    <div class="nasq-container">
+      {% component breadcrumbs %}
+      <h1>{{ page.title|striptags }}</h1>
+    </div>
+  </section>
+  <section class="nasq-section nasq-products-page">
+    <div class="nasq-container">
+      {% hook 'product:index.items.start' %}
+      <salla-products-list
+        source="{{ page.slug }}"
+        source-value="{{ page.id }}"
+        filters-results
+        autoload>
+      </salla-products-list>
+      {% hook 'product:index.items.end' %}
+    </div>
+  </section>
+{% endblock %}
+

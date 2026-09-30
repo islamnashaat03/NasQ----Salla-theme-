@@ -1,0 +1,51 @@
+{% extends 'layouts.master' %}
+
+{% block content %}
+  <div class="nasq-container nasq-product-page" id="product-{{ product.id }}">
+    {% component breadcrumbs %}
+    <div class="nasq-product">
+      <section class="nasq-product__gallery" aria-label="{{ trans('nasq.product.gallery') }}">
+        {% for image in product.images %}
+          {% if image.type == 'image' %}
+            <button type="button" class="nasq-product__image {{ loop.first ? 'is-active' : '' }}" data-product-image>
+              <img src="{{ image.url }}" alt="{{ image.alt ?: product.name }}" loading="{{ loop.first ? 'eager' : 'lazy' }}">
+            </button>
+          {% endif %}
+        {% endfor %}
+      </section>
+
+      <section class="nasq-product__summary">
+        {% if product.promotion_title %}<span class="nasq-product__badge">{{ product.promotion_title }}</span>{% endif %}
+        {% if product.brand %}<a class="nasq-product__brand" href="{{ product.brand.url }}">{{ product.brand.name }}</a>{% endif %}
+        <h1>{{ product.name }}</h1>
+        {% if product.subtitle %}<p class="nasq-product__subtitle">{{ product.subtitle }}</p>{% endif %}
+        {% if product.rating %}<salla-rating-stars value="{{ product.rating.stars }}" reviews="{{ product.rating.count }}"></salla-rating-stars>{% endif %}
+
+        <div class="nasq-product__price">
+          {% if product.is_on_sale %}<del>{{ product.regular_price|money }}</del>{% endif %}
+          <strong>{{ product.sale_price|money }}</strong>
+        </div>
+
+        <form class="nasq-product__form" enctype="multipart/form-data" method="post" onsubmit="return salla.form.onSubmit('cart.addItem', event)">
+          <input type="hidden" name="id" value="{{ product.id }}">
+          {% hook 'product:single.form.start' %}
+          {% if product.options %}<salla-product-options options="{{ product.options|json_encode|e }}" product-id="{{ product.id }}"></salla-product-options>{% endif %}
+          <div class="nasq-product__quantity">
+            <label for="nasq-product-quantity">{{ trans('nasq.product.quantity') }}</label>
+            <salla-quantity-input id="nasq-product-quantity" name="quantity" value="1" max="{{ product.max_quantity }}"></salla-quantity-input>
+          </div>
+          <salla-add-product-button product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" type="submit" width="wide" {{ product.can_quick_buy ? 'quick-buy' : '' }}>
+            {{ product.add_to_cart_label }}
+          </salla-add-product-button>
+          {% hook 'product:single.form.end' %}
+        </form>
+
+        {% hook 'product:single.description.start' %}
+        {% if product.description %}<div class="nasq-product__description"><h2>{{ trans('nasq.product.description') }}</h2><p>{{ product.description|striptags }}</p></div>{% endif %}
+        {% if product.metadata %}<salla-metadata items="{{ product.metadata|json_encode|e }}"></salla-metadata>{% endif %}
+        <salla-social-share url="{{ product.url }}" title="{{ product.name }}"></salla-social-share>
+      </section>
+    </div>
+  </div>
+{% endblock %}
+

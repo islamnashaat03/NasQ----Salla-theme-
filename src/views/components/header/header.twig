@@ -1,0 +1,18 @@
+{% set layout = theme.settings.get('header_layout', 'classic') %}
+{% set logo_source = theme.settings.get('header_logo_source', 'store') %}
+{% set custom_logo = logo_source == 'custom' ? theme.settings.get('header_custom_logo') : null %}
+{% set full_width = theme.settings.get('header_full_width', false) %}
+<header class="nasq-header nasq-header--{{ layout }} {{ theme.settings.get('header_sticky', true) ? 'is-sticky' : '' }} {{ theme.settings.get('header_show_border', true) ? 'has-border' : '' }}" style="--header-height:{{ theme.settings.get('header_height', 84) }}px;--header-mobile-height:{{ theme.settings.get('header_mobile_height', 68) }}px;--header-bg:{{ theme.settings.get('header_background', '#ffffff') }};--header-text:{{ theme.settings.get('header_text_color', '#17211f') }};--header-icons:{{ theme.settings.get('header_icon_color', '#17211f') }};--header-border:{{ theme.settings.get('header_border_color', '#e8ecea') }};--menu-gap:{{ theme.settings.get('header_menu_gap', 22) }}px;--menu-align:{{ theme.settings.get('header_menu_align', 'center') }};--logo-width:{{ theme.settings.get('header_logo_width', 150) }}px;--logo-mobile-width:{{ theme.settings.get('header_logo_mobile_width', 112) }}px">
+  {% if theme.settings.get('header_announcement', true) %}<a class="nasq-announcement" href="{{ theme.settings.get('header_announcement_link', '#') }}" style="--bar-height:{{ theme.settings.get('header_announcement_height', 38) }}px;--bar-bg:{{ theme.settings.get('header_announcement_bg', '#17211f') }};--bar-color:{{ theme.settings.get('header_announcement_color', '#ffffff') }}">{{ theme.settings.get('header_announcement_text', trans('nasq.header.announcement_default')) }}</a>{% endif %}
+  <div class="{{ full_width ? 'nasq-header__fluid' : 'nasq-container' }} nasq-header__row">
+    <button class="nasq-icon-button nasq-menu-toggle" type="button" aria-label="{{ trans('nasq.header.menu') }}" data-nasq-menu-toggle><i class="sicon-menu"></i></button>
+    <a class="nasq-logo" href="{{ store.url }}" aria-label="{{ store.name }}">{% if logo_source == 'text' %}<strong>{{ store.name }}</strong>{% else %}<img src="{{ custom_logo ?: store.logo }}" alt="{{ store.name }}">{% endif %}</a>
+    <nav class="nasq-nav" aria-label="{{ trans('nasq.header.main_navigation') }}" data-nasq-menu><ul class="nasq-nav__list">{% for item in menus.main_menu %}<li><a href="{{ item.url }}">{{ item.title }}</a></li>{% endfor %}</ul></nav>
+    <div class="nasq-header__actions">
+      {% if theme.settings.get('header_show_search', true) %}<button class="nasq-icon-button" type="button" aria-label="{{ trans('nasq.header.search') }}" onclick="salla.event.dispatch('search::open')"><i class="sicon-search"></i></button>{% endif %}
+      {% if theme.settings.get('header_show_account', true) %}<button class="nasq-icon-button" type="button" aria-label="{{ trans('nasq.header.account') }}" onclick="salla.event.dispatch('login::open')"><i class="sicon-user-circle"></i></button>{% endif %}
+      {% if theme.settings.get('header_show_language', false) %}<button class="nasq-icon-button" type="button" aria-label="{{ trans('nasq.header.language') }}" onclick="salla.event.dispatch('localization::open')"><i class="sicon-globe"></i></button>{% endif %}
+      {% if theme.settings.get('header_show_cart', true) %}<salla-cart-summary></salla-cart-summary>{% endif %}
+    </div>
+  </div>
+</header>

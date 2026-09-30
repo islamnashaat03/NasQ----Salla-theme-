@@ -1,0 +1,2 @@
+<section class="nasq-section"><div class="nasq-container">{% if component.title %}<h2 class="nasq-section__title">{{ component.title }}</h2>{% endif %}<div class="nasq-banner-grid">{% for banner in component.banners %}<a class="nasq-banner" href="{{ banner.url ?: '#' }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" loading="lazy">{% if banner.title %}<strong>{{ banner.title }}</strong>{% endif %}</a>{% endfor %}</div></div></section>
+
