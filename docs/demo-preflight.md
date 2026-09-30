@@ -16,3 +16,10 @@ Local candidate: 55 settings, 3 components. Existing validation and asset-copy b
 No portal settings were saved, no publication request was sent, and no UI feature is marked demo-verified.
 
 Next: upload the candidate to a separate codex/nasq-builder-test branch, select it in Partners, verify synchronized settings/components, and preview on nasq-demo-new. Then test header/footer layouts, logo controls, Hero 100 modes and responsive behavior.
+
+## Deployment update
+
+- Uploaded independent candidate to codex/nasq-builder-test, commit 53aa1e9.
+- Selected and confirmed codex/nasq-builder-test in Partners.
+- Portal still displayed the previous 18 components immediately after selection; synchronization is not verified yet.
+- Sending this record update after branch selection to exercise the selected branch webhook.
