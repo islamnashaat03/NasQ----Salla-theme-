@@ -7,12 +7,15 @@
   "scripts": {
     "validate": "node scripts/validate-salla-contract.mjs && node scripts/validate-theme.mjs",
     "build": "node scripts/build.mjs",
+    "watch": "node scripts/watch.mjs",
     "production": "npm run validate && npm run build"
   },
   "engines": {
     "node": ">=18"
   },
   "devDependencies": {
+    "webpack": "5.111.1",
+    "glob": "13.0.6",
     "@salla.sa/twilight": "2.14.583",
     "@salla.sa/twilight-components": "2.14.583"
   }

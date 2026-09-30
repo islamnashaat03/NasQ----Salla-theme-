@@ -1,6 +1,7 @@
 node_modules/
 .pnpm-store/
 .npm-cache/
+.tools/
 nasq-builder-demo-candidate.zip
 docs/*.png
 *.log
