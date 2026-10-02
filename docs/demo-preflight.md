@@ -1,6 +1,6 @@
 ﻿# Salla demo preflight — 2026-09-30
 
-Status: BLOCKED — local candidate is not deployed to the selected portal branch.
+Status: BLOCKED — candidate is pushed and portal schema is synchronized, but draft template uploads fail. See the latest dated entry below.
 
 Official workflow reviewed: https://docs.salla.dev/421879m0
 
@@ -45,3 +45,17 @@ Next: upload the candidate to a separate codex/nasq-builder-test branch, select 
 - Storefront still reports 422 / src/views/pages/index.twig Not Found. Custom home components are absent from the draft editor.
 - IMPORTANT: official `salla theme sync` returns process status 0 even when the upload fails. Initial helper progress lines were not evidence of successful uploads. Capturing its response confirmed an error in Arabic (unexpected error) for homepage upload; absolute file paths produce the same response.
 - Synchronization into the draft remains failed; no UI features have passed demo tests. Portal schema synchronization and local watcher startup are verified separately.
+
+## Retest — 2026-10-03
+
+- Reviewed official preview documentation again: https://docs.salla.dev/422776m0.
+- Partners still selects codex/nasq-builder-test and displays 3 components / 7 features.
+- New portal draft: 1053532842. New authenticated CLI draft: 143704491. Both editors omit custom home components.
+- Fixed the local ignored CLI launcher: preview internally invokes `salla theme serve`, which requires a `salla` executable on PATH, even when the parent CLI was launched through node. Assets / websocket servers and webpack watcher now start successfully.
+- Instrumented only the installed CLI error handler in memory to report safe HTTP status, error code and message. No source theme files were changed by diagnostics.
+- Homepage upload fails on both the previous draft and the refreshed CLI draft: HTTP 417, code `error`, message `حصل خطأ غير متوقع!`.
+- Confirmed src/views/pages/index.twig and the other 11 Twig templates are tracked in commit bc1f037.
+- Current preview frame is blank; do not carry forward the earlier 422 as today's rendered result.
+- Related public reports exist, but neither establishes the cause of this instance: https://github.com/SallaApp/Salla-CLI/issues/138 and https://github.com/SallaApp/Salla-CLI/issues/134.
+- Prepared docs/salla-support-diagnostic.md for user handoff. Nothing was sent to support.
+- Header / footer / Hero 100 UI and mobile tests remain pending until the draft receives the files and schema.
