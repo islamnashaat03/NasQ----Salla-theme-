@@ -54,7 +54,8 @@
           "value": "28px",
           "key": "radius-round"
         }
-      ]
+      ],
+      "source": "Manual"
     },
     {
       "id": "nasq_container",
@@ -85,7 +86,8 @@
           "value": "1440px",
           "key": "container-fluid"
         }
-      ]
+      ],
+      "source": "Manual"
     },
     {
       "type": "static",
@@ -128,7 +130,8 @@
           "value": "two-rows",
           "key": "header-two-rows"
         }
-      ]
+      ],
+      "source": "Manual"
     },
     {
       "id": "header_height",
@@ -204,7 +207,8 @@
           "value": "text",
           "key": "logo-text"
         }
-      ]
+      ],
+      "source": "Manual"
     },
     {
       "id": "header_custom_logo",
@@ -262,7 +266,8 @@
           "value": "end",
           "key": "menu-end"
         }
-      ]
+      ],
+      "source": "Manual"
     },
     {
       "id": "header_menu_gap",
@@ -428,7 +433,8 @@
           "value": "brand-first",
           "key": "footer-brand-first"
         }
-      ]
+      ],
+      "source": "Manual"
     },
     {
       "id": "footer_padding_top",
@@ -512,7 +518,8 @@
           "value": "text",
           "key": "footer-logo-text"
         }
-      ]
+      ],
+      "source": "Manual"
     },
     {
       "id": "footer_custom_logo",
@@ -647,7 +654,8 @@
               "value": "video-slider",
               "key": "hero-bg-videos"
             }
-          ]
+          ],
+          "source": "Manual"
         },
         {
           "id": "background_image",
@@ -776,7 +784,8 @@
               "value": "end",
               "key": "hero-end"
             }
-          ]
+          ],
+          "source": "Manual"
         },
         {
           "id": "vertical_align",
@@ -807,7 +816,8 @@
               "value": "end",
               "key": "hero-v-end"
             }
-          ]
+          ],
+          "source": "Manual"
         },
         {
           "id": "content_width",
@@ -894,7 +904,8 @@
                   "value": "link",
                   "key": "btn-link"
                 }
-              ]
+              ],
+              "source": "Manual"
             }
           ],
           "value": []

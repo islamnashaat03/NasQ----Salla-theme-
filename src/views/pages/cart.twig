@@ -21,7 +21,7 @@
             <salla-button type="button" shape="icon" color="danger" aria-label="{{ trans('nasq.cart.remove') }}" onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#cart-item-{{ item.id }}').remove())"><i class="sicon-trash"></i></salla-button>
           </form>
         {% else %}
-          <div class="nasq-empty-state"><i class="sicon-shopping-bag"></i><h2>{{ trans('nasq.cart.empty') }}</h2><a class="nasq-button" href="{{ links.products }}">{{ trans('nasq.cart.continue_shopping') }}</a></div>
+          <div class="nasq-empty-state"><i class="sicon-shopping-bag"></i><h2>{{ trans('nasq.cart.empty') }}</h2><a class="nasq-button" href="{{ links.products ?: store.url }}">{{ trans('nasq.cart.continue_shopping') }}</a></div>
         {% endfor %}
         {% hook 'cart:items.end' %}
       </section>

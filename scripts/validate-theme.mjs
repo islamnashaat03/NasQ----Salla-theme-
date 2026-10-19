@@ -12,6 +12,14 @@ const required = [
 
 await Promise.all(required.map((file) => access(file)));
 const config = JSON.parse(await readFile('twilight.json', 'utf8'));
+function validateOptions(fields) {
+  for (const field of fields) {
+    if (field.type === 'items' && field.format === 'dropdown-list' && field.options?.length && field.source !== 'Manual') throw new Error(`Dropdown ${field.id} with explicit options requires source Manual.`);
+    if (field.fields) validateOptions(field.fields);
+  }
+}
+validateOptions(config.settings);
+for (const component of config.components) validateOptions(component.fields);
 const manifest = JSON.parse(await readFile('package.json', 'utf8'));
 if (!config.version || config.version !== manifest.version) throw new Error('Twilight version must match package.json.');
 if (!config.theme_name || !config.repo_url || config.repo_url !== config.repository) throw new Error('Official theme name and repository metadata are required.');

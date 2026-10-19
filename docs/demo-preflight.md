@@ -1,6 +1,6 @@
 ﻿# Salla demo preflight — 2026-09-30
 
-Status: RENDERING RECOVERED IN CLI DRAFT — master layout type error fixed and real NASQ HTML verified. Local CSS/JS access is blocked by Chrome's local-network permission; styled visual verification remains pending. See latest dated entry.
+Status: STYLED DESKTOP PREVIEW VERIFIED — after user allowed device access, the NASQ header, saved Hero and footer render with theme styling. Broader feature/mobile tests remain pending. See latest dated entry.
 
 Official workflow reviewed: https://docs.salla.dev/421879m0
 
@@ -103,3 +103,12 @@ Next: upload the candidate to a separate codex/nasq-builder-test branch, select 
 - Separate browser blocker: CSS/JS requests to localhost:8000 fail with `LocalNetworkAccessPermissionDenied`. Full visual verification requires the browser's local-network permission. No protection was disabled.
 - Preview with local parameters cleared fell back to an older render state; it is not a verified workaround. Current fresh CLI draft is 1646816954; all Twig/locales received explicit success responses.
 - Portal remote-preview attempt stopped at Cloudflare automatic security verification; no challenge was solved or bypassed.
+
+## Device access enabled by user — 2026-10-20
+
+- User enabled Apps on device for salla.design, then reported completion.
+- Reloaded the existing storefront; verified styled header, Hero 100 title/button and footer visually. NASQ styles now apply in Chrome.
+- Measured saved Hero height: 720 CSS pixels; overlay computed opacity: 0. Saved title matches the editor test.
+- Local assets endpoint responds HTTP 200. No new permission changes were performed by the agent.
+- Evidence: docs/nasq-styled-preview-2026-10-20.png.
+- Full media modes, mobile layouts, cart and checkout workflows remain unverified; this entry confirms restored styled desktop preview only.
