@@ -30,7 +30,12 @@ const backgroundTypes = hero.fields.find((field) => field.id === 'background_typ
 for (const mode of ['image', 'video', 'image-slider', 'video-slider']) {
   if (!backgroundTypes.includes(mode)) throw new Error(`Hero 100 background mode missing: ${mode}`);
 }
+const componentKeys = new Set();
 for (const component of config.components) {
+  if (typeof component.key !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(component.key)) throw new Error(`Component ${component.name} requires a stable UUID key.`);
+  if (componentKeys.has(component.key)) throw new Error(`Duplicate component key: ${component.key}`);
+  componentKeys.add(component.key);
+  if (!component.title || !component.path || !Array.isArray(component.fields)) throw new Error(`Component ${component.name} requires title, path and fields.`);
   const fieldIds = component.fields.map((field) => field.id);
   if (new Set(fieldIds).size !== fieldIds.length) throw new Error(`Duplicate fields in component: ${component.name}`);
   for (const field of component.fields.filter((item) => item.type === 'collection')) {

@@ -59,3 +59,12 @@ Next: upload the candidate to a separate codex/nasq-builder-test branch, select 
 - Related public reports exist, but neither establishes the cause of this instance: https://github.com/SallaApp/Salla-CLI/issues/138 and https://github.com/SallaApp/Salla-CLI/issues/134.
 - Prepared docs/salla-support-diagnostic.md for user handoff. Nothing was sent to support.
 - Header / footer / Hero 100 UI and mobile tests remain pending until the draft receives the files and schema.
+
+## Retest — 2026-10-10
+
+- Fresh authenticated CLI draft: 1676976796, same theme and demo store.
+- Local production validation/build still pass (15 records, 55 settings, 3 components).
+- Unlike October 3, all 12 Twig files and both translation files now receive explicit `is synced successfully` responses. HTTP 417 was not reproduced for these uploads.
+- Root twilight.json upload fails: `The path field is required.` The official CLI sends an empty directory for root files. A temporary in-memory diagnostic using `.` as root receives HTTP 422 / `Paths with dots not allowed.` No theme source was modified.
+- After reloading, the editor still omits custom components; the preview explicitly reports HTTP 422 / `File [src/views/pages/index.twig] Not Found`, despite the accepted upload response.
+- Saved local screenshot: docs/demo-retest-2026-10-10.png. UI feature tests remain pending. Upload acknowledgement alone does not establish working draft rendering.
