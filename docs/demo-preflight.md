@@ -80,3 +80,14 @@ Next: upload the candidate to a separate codex/nasq-builder-test branch, select 
 - Current preview renders a demo storefront; this alone does not verify NASQ-specific storefront behavior. End-to-end save/render, header/footer and mobile tests remain pending.
 - Evidence saved locally: docs/hero-settings-2026-10-20.png.
 - Missing keys are a confirmed project defect and current preview blocker resolved by the change. This does not prove they caused every historical HTTP 417 response.
+
+## Builder implementation and save test — 2026-10-20
+
+- Pushed runtime fixes fa98f2a: normalize dropdown arrays in header/footer/Hero, preserve zero overlay opacity, preserve footer logo colors, align Hero buttons, improve mobile layout and keyboard navigation.
+- Local navigation regression checks pass for opening, Escape/focus restoration, link selection, outside click and breakpoint reset. Production gate passes with 18 review records, 55 settings and 3 components after subsequent schema fix.
+- Draft 757958067 reproduced the missing homepage template even after explicit success responses for all Twig and locale uploads. Root twilight.json upload still rejects an empty path.
+- Demo Hero save initially failed: image and video slide collections both required their first empty media item, even with image background selected.
+- Pushed 688315d: optional collections allow zero entries; validator prevents positive minimum lengths on optional collections. Salla still seeds one blank item in its form, but now exposes removal controls.
+- Fresh draft 2131403964: removed the two unused blank slide items, set title `اختبار NASQ — Hero 100`, opacity 0 and one button. The editor displayed `حُفظت التغييرات بنجاح.` and added Hero 100 to the page (instance 2139582703).
+- Reopened that instance: the saved title appears in its heading. Test content is intentionally retained on nasq-demo-new only.
+- Saved evidence docs/hero-save-verified-2026-10-20.png. This verifies editor save, not storefront rendering. Background media playback, actual responsive rendering and header/footer visual tests remain unverified because of the preview template error.
