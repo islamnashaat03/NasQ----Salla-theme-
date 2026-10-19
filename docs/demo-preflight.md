@@ -1,6 +1,6 @@
 ﻿# Salla demo preflight — 2026-09-30
 
-Status: BLOCKED — candidate is pushed and portal schema is synchronized, but draft template uploads fail. See the latest dated entry below.
+Status: PARTIAL RECOVERY — component identity defect fixed; new draft exposes custom components and Hero settings. Full storefront feature tests remain pending. See latest dated entry.
 
 Official workflow reviewed: https://docs.salla.dev/421879m0
 
@@ -68,3 +68,15 @@ Next: upload the candidate to a separate codex/nasq-builder-test branch, select 
 - Root twilight.json upload fails: `The path field is required.` The official CLI sends an empty directory for root files. A temporary in-memory diagnostic using `.` as root receives HTTP 422 / `Paths with dots not allowed.` No theme source was modified.
 - After reloading, the editor still omits custom components; the preview explicitly reports HTTP 422 / `File [src/views/pages/index.twig] Not Found`, despite the accepted upload response.
 - Saved local screenshot: docs/demo-retest-2026-10-10.png. UI feature tests remain pending. Upload acknowledgement alone does not establish working draft rendering.
+
+## Diagnosis and recovery — 2026-10-20
+
+- Initial fresh CLI preview explicitly rejected twilight.json: `Custom component must have (title, key, fields, path)`.
+- All three local components lacked key. Compared the official example linked from docs.salla.dev/421921m0; current reference components use stable UUID keys.
+- Registered review before adding stable keys and local validation for missing/duplicate identities. Local checks previously missed this requirement.
+- Validated and pushed fix 613698f to codex/nasq-builder-test.
+- Retried official CLI: accepted preview, draft 24790961. The editor now lists Hero 100, Store Features and Banner Grid.
+- Opened Hero 100: height/mobile height, background selector/image/video/slide collections, overlay, alignment, text and buttons are visible in the form. No test content was saved.
+- Current preview renders a demo storefront; this alone does not verify NASQ-specific storefront behavior. End-to-end save/render, header/footer and mobile tests remain pending.
+- Evidence saved locally: docs/hero-settings-2026-10-20.png.
+- Missing keys are a confirmed project defect and current preview blocker resolved by the change. This does not prove they caused every historical HTTP 417 response.
