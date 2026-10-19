@@ -26,6 +26,15 @@ for (const file of twigFiles) {
 }
 
 const config = JSON.parse(await readFile('twilight.json', 'utf8'));
+const dropdownIds = new Set(config.settings.filter((field) => field.type === 'items').map((field) => field.id));
+for (const file of twigFiles) {
+  const source = await readFile(file, 'utf8');
+  for (const output of source.matchAll(/\{\{[\s\S]*?\}\}/g)) {
+    for (const getter of output[0].matchAll(/theme\.settings\.get\(['"]([^'"]+)['"]/g)) {
+      if (dropdownIds.has(getter[1])) throw new Error(`Normalize dropdown ${getter[1]} before rendering it in ${file}; Salla can return a value wrapper.`);
+    }
+  }
+}
 for (const component of config.components) {
   const file = `src/views/components/${component.path.replaceAll('.', '/')}.twig`;
   if (!twigFiles.includes(file)) throw new Error(`Component template missing: ${file}`);

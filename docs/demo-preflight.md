@@ -1,6 +1,6 @@
 ﻿# Salla demo preflight — 2026-09-30
 
-Status: PARTIAL RECOVERY — component identity defect fixed; new draft exposes custom components and Hero settings. Full storefront feature tests remain pending. See latest dated entry.
+Status: RENDERING RECOVERED IN CLI DRAFT — master layout type error fixed and real NASQ HTML verified. Local CSS/JS access is blocked by Chrome's local-network permission; styled visual verification remains pending. See latest dated entry.
 
 Official workflow reviewed: https://docs.salla.dev/421879m0
 
@@ -91,3 +91,15 @@ Next: upload the candidate to a separate codex/nasq-builder-test branch, select 
 - Fresh draft 2131403964: removed the two unused blank slide items, set title `اختبار NASQ — Hero 100`, opacity 0 and one button. The editor displayed `حُفظت التغييرات بنجاح.` and added Hero 100 to the page (instance 2139582703).
 - Reopened that instance: the saved title appears in its heading. Test content is intentionally retained on nasq-demo-new only.
 - Saved evidence docs/hero-save-verified-2026-10-20.png. This verifies editor save, not storefront rendering. Background media playback, actual responsive rendering and header/footer visual tests remain unverified because of the preview template error.
+
+## Confirmed rendering cause and fix — 2026-10-20
+
+- Updated isolated official CLI from 3.2.56 to 3.2.63. Update alone did not fix rendering. Confirmed remote Git branch and generated preview tag point to the intended commit.
+- Inspected the actual preview HTTP response: a 110-byte HTML comment reported `Array to string conversion in File [src/views/layouts/master.twig] at line 16.` The visible missing-file screen did not reveal this underlying render exception.
+- A temporary demo-only index diagnostic emitted only the public radius enum setting. Observed shape: `{"value":[""],"source":null}`. Restored and re-uploaded the original homepage immediately after diagnosis.
+- Fix 05852fe unwraps the value wrapper, the selected array item and optional option.value before CSS/class output, with scalar defaults. Applied to master radius/container, header/footer layouts/logo sources, header alignment and Hero selectors/button style. Removed duplicate CDN transformation from the font URL.
+- Verified actual live draft HTML contains nasq-theme and the saved Hero title, link, header and footer; HTML size 44,524 bytes rather than the error comment. This confirms the template executes, independently of upload acknowledgements.
+- Added local regression gate rejecting direct output of `items` theme settings. Positive fixture passes; a fixture with direct nasq_radius interpolation fails with the expected diagnostic.
+- Separate browser blocker: CSS/JS requests to localhost:8000 fail with `LocalNetworkAccessPermissionDenied`. Full visual verification requires the browser's local-network permission. No protection was disabled.
+- Preview with local parameters cleared fell back to an older render state; it is not a verified workaround. Current fresh CLI draft is 1646816954; all Twig/locales received explicit success responses.
+- Portal remote-preview attempt stopped at Cloudflare automatic security verification; no challenge was solved or bypassed.
