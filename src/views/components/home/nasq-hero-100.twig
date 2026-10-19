@@ -1,9 +1,18 @@
 {% set background_type = component.background_type ?: 'image' %}
+{% set background_type = background_type.value is defined ? background_type.value : background_type %}
 {% set background_type = background_type is iterable ? background_type|first : background_type %}
+{% set background_type = background_type.value is defined ? background_type.value : background_type %}
+{% set background_type = background_type ?: 'image' %}
 {% set vertical_align = component.vertical_align ?: 'center' %}
+{% set vertical_align = vertical_align.value is defined ? vertical_align.value : vertical_align %}
 {% set vertical_align = vertical_align is iterable ? vertical_align|first : vertical_align %}
+{% set vertical_align = vertical_align.value is defined ? vertical_align.value : vertical_align %}
+{% set vertical_align = vertical_align ?: 'center' %}
 {% set content_align = component.content_align ?: 'center' %}
+{% set content_align = content_align.value is defined ? content_align.value : content_align %}
 {% set content_align = content_align is iterable ? content_align|first : content_align %}
+{% set content_align = content_align.value is defined ? content_align.value : content_align %}
+{% set content_align = content_align ?: 'center' %}
 {% set overlay_opacity = component.overlay_opacity is defined and component.overlay_opacity is not null ? component.overlay_opacity : 40 %}
 <section class="nasq-hero100 nasq-hero100--{{ background_type }} nasq-hero100--h-{{ vertical_align }} nasq-hero100--x-{{ content_align }}" style="--hero-height:{{ component.height ?: 720 }}px;--hero-mobile-height:{{ component.mobile_height ?: 560 }}px;--hero-color:{{ component.text_color ?: '#ffffff' }};--hero-overlay:{{ component.overlay_color ?: '#000000' }};--hero-opacity:{{ overlay_opacity / 100 }};--hero-content-width:{{ component.content_width ?: 760 }}px">
   <div class="nasq-hero100__media" aria-hidden="true">
@@ -20,6 +29,10 @@
     {% if component.eyebrow %}<span class="nasq-hero100__eyebrow">{{ component.eyebrow }}</span>{% endif %}
     <h1>{{ component.title }}</h1>
     {% if component.description %}<p>{{ component.description }}</p>{% endif %}
-    {% if component.buttons %}<div class="nasq-hero100__buttons">{% for button in component.buttons %}{% set button_style = button.style is iterable ? button.style|first : button.style %}<a class="nasq-hero100__button nasq-hero100__button--{{ button_style ?: 'solid' }}" href="{{ button.url }}">{{ button.label }}</a>{% endfor %}</div>{% endif %}
+    {% if component.buttons %}<div class="nasq-hero100__buttons">{% for button in component.buttons %}{% set button_style = button.style %}
+{% set button_style = button_style.value is defined ? button_style.value : button_style %}
+{% set button_style = button_style is iterable ? button_style|first : button_style %}
+{% set button_style = button_style.value is defined ? button_style.value : button_style %}
+{% set button_style = button_style ?: 'solid' %}<a class="nasq-hero100__button nasq-hero100__button--{{ button_style ?: 'solid' }}" href="{{ button.url }}">{{ button.label }}</a>{% endfor %}</div>{% endif %}
   </div></div>
 </section>

@@ -1,7 +1,13 @@
 {% set layout = theme.settings.get('footer_layout', 'columns') %}
 {% set logo_source = theme.settings.get('footer_logo_source', 'store') %}
+{% set layout = layout.value is defined ? layout.value : layout %}
 {% set layout = layout is iterable ? layout|first : layout %}
+{% set layout = layout.value is defined ? layout.value : layout %}
+{% set layout = layout ?: 'columns' %}
+{% set logo_source = logo_source.value is defined ? logo_source.value : logo_source %}
 {% set logo_source = logo_source is iterable ? logo_source|first : logo_source %}
+{% set logo_source = logo_source.value is defined ? logo_source.value : logo_source %}
+{% set logo_source = logo_source ?: 'store' %}
 {% set custom_logo = logo_source == 'custom' ? theme.settings.get('footer_custom_logo') : null %}
 <footer class="nasq-footer nasq-footer--{{ layout }}" style="--footer-bg:{{ theme.settings.get('footer_background', '#15201e') }};--footer-title:{{ theme.settings.get('footer_title_color', '#ffffff') }};--footer-text:{{ theme.settings.get('footer_text_color', '#b8c4bf') }};--footer-link:{{ theme.settings.get('footer_link_color', '#eef5f1') }};--footer-icon:{{ theme.settings.get('footer_icon_color', '#ffffff') }};--footer-border:{{ theme.settings.get('footer_border_color', '#34403d') }};--footer-pad:{{ theme.settings.get('footer_padding_top', 64) }}px;--footer-gap:{{ theme.settings.get('footer_columns_gap', 36) }}px;--footer-logo-width:{{ theme.settings.get('footer_logo_width', 150) }}px">
   <div class="nasq-container nasq-footer__grid">

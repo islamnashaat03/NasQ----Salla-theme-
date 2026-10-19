@@ -1,3 +1,13 @@
+{% set radius = theme.settings.get('nasq_radius', '16px') %}
+{% set radius = radius.value is defined ? radius.value : radius %}
+{% set radius = radius is iterable ? radius|first : radius %}
+{% set radius = radius.value is defined ? radius.value : radius %}
+{% set radius = radius ?: '16px' %}
+{% set container_width = theme.settings.get('nasq_container', '1280px') %}
+{% set container_width = container_width.value is defined ? container_width.value : container_width %}
+{% set container_width = container_width is iterable ? container_width|first : container_width %}
+{% set container_width = container_width.value is defined ? container_width.value : container_width %}
+{% set container_width = container_width ?: '1280px' %}
 <!doctype html>
 <html lang="{{ language.code }}" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
 <head>
@@ -7,14 +17,14 @@
   {% hook head %}
   {% block styles %}{% endblock %}
   <link rel="stylesheet" href="{{ 'app.css'|asset }}">
-  {% if theme.font.path %}<link rel="stylesheet" href="{{ theme.font.path|cdn }}">{% endif %}
+  {% if theme.font.path %}<link rel="stylesheet" href="{{ theme.font.path }}">{% endif %}
   <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}">
   <style>
     :root {
       --nasq-primary: {{ theme.color.primary }};
       --nasq-on-primary: {{ theme.color.reverse_text }};
-      --nasq-radius: {{ theme.settings.get('nasq_radius', '16px') }};
-      --nasq-container: {{ theme.settings.get('nasq_container', '1280px') }};
+      --nasq-radius: {{ radius }};
+      --nasq-container: {{ container_width }};
       --nasq-font: '{{ theme.font.name }}', system-ui, sans-serif;
     }
   </style>
