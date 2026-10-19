@@ -673,7 +673,7 @@
           "format": "collection",
           "label": "صور السلايدر",
           "required": false,
-          "minLength": 1,
+          "minLength": 0,
           "maxLength": 10,
           "fields": [
             {
@@ -689,7 +689,8 @@
               "format": "text",
               "label": "النص البديل"
             }
-          ]
+          ],
+          "value": []
         },
         {
           "id": "video_slides",
@@ -697,7 +698,7 @@
           "format": "collection",
           "label": "فيديوهات السلايدر",
           "required": false,
-          "minLength": 1,
+          "minLength": 0,
           "maxLength": 10,
           "fields": [
             {
@@ -713,7 +714,8 @@
               "format": "image",
               "label": "صورة الانتظار"
             }
-          ]
+          ],
+          "value": []
         },
         {
           "id": "autoplay",
@@ -846,7 +848,7 @@
           "format": "collection",
           "label": "الأزرار",
           "required": false,
-          "minLength": 1,
+          "minLength": 0,
           "maxLength": 4,
           "fields": [
             {
@@ -894,7 +896,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "value": []
         }
       ],
       "key": "7a763bda-c822-49b3-8826-d9773817a0c4"

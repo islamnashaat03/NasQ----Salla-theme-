@@ -39,6 +39,7 @@ for (const component of config.components) {
   const fieldIds = component.fields.map((field) => field.id);
   if (new Set(fieldIds).size !== fieldIds.length) throw new Error(`Duplicate fields in component: ${component.name}`);
   for (const field of component.fields.filter((item) => item.type === 'collection')) {
+    if (field.required === false && field.minLength > 0) throw new Error(`Optional collection ${component.name}.${field.id} must allow zero entries.`);
     if (!field.maxLength || field.maxLength > 10) throw new Error(`Collection ${component.name}.${field.id} must have maxLength <= 10.`);
   }
 }
