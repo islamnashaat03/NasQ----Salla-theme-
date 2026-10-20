@@ -127,3 +127,15 @@ Next: upload the candidate to a separate codex/nasq-builder-test branch, select 
 - Local production passes: 24 reviewed artifacts, 55 settings, 3 components. Navigation and unsafe-dropdown regression checks pass. Fix commit 1af05fe pushed to codex/nasq-builder-test.
 - Remaining: mobile slider coverage, header/footer option combinations and logo swaps, populated cart/product options/checkout. Maintenance notice remains present; no order/payment was placed. Browser plugin absent; used the existing authenticated Chrome extension CUA session.
 - Screenshot evidence from prior checks is outside the repo in %TEMP%/nasq-qa-20261020 (search.png, mobile-hero.png).
+
+## Builder settings and mobile video slider — 2026-10-20
+
+- Reviewed official header, footer and slider references: https://docs.salla.dev/422601m0, https://docs.salla.dev/422602m0, https://docs.salla.dev/422735m0. No theme source/schema changes in this run.
+- Authenticated Chrome extension QA: saved header centered, two-rows and split layouts; observed corresponding storefront classes. Classic layout was the baseline and restored afterward. Saved centered, compact and brand-first footer layouts; observed matching classes. Compact footer omitted contact links as intended.
+- Header text logo and existing custom uploaded logo rendered. Footer text logo rendered after saving the selected source. Search visibility toggle removed and restored the search button.
+- Numeric editor interaction initially concatenated the typed height to the old value (8496). Corrected using select-all/backspace and explicit typing; confirmed the saved CSS variable was 96px. This was a test-input correction, not a theme code fix.
+- The required radius dropdown was initially unset. Selected Medium (16px), matching the runtime fallback, to permit saving. This explicit default remains on the demo.
+- Used tab-scoped Chrome device emulation after browser-wide viewport override had failed to affect the actual page. Measured innerWidth 390, visualViewport.width 390 and scrollWidth 390.
+- Temporary Hero 1731391542 (`NASQ Mobile Slider QA`): two video slides, both URLs loaded. At 390x844, slider and video heights were both 560px. Clicking second pagination bullet activated index 1; its video had readyState 4 and was playing. Screenshot: C:/Users/Q/AppData/Local/Temp/nasq-qa-20261020/mobile-video-slider.png.
+- Removed temporary Hero and verified its title absent from the storefront. Restored classic header, columns footer, original store-logo sources, header height 84px and search enabled. Kept original custom-logo file and original Hero. Cleared device emulation (normal page width 929).
+- Still unverified: mobile image slider specifically, footer custom image replacement, full combinations of colors/spacing/tools, populated cart and checkout. Existing empty optional-row editor behavior and preview telemetry errors remain documented above.
