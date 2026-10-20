@@ -23,6 +23,10 @@
 .nasq-hero100--x-start .nasq-hero100__buttons{justify-content:flex-start}
 .nasq-hero100--x-center .nasq-hero100__buttons{justify-content:center}
 .nasq-hero100--x-end .nasq-hero100__buttons{justify-content:flex-end}
+.nasq-hero100__media .s-slider-container{height:100%;width:100%;max-width:none;margin:0;padding:0}
+.nasq-hero100__media .s-slider-swiper-wrapper{height:100%}
+.nasq-hero100__media salla-slider .swiper-slide{height:100%;padding:0}
+.nasq-hero100__media .swiper-slide img,.nasq-hero100__media .swiper-slide video{display:block;height:100%;width:100%;object-fit:cover}
 @media(max-width:900px){
 .nasq-header .nasq-nav{background:var(--header-bg);color:var(--header-text);border-color:var(--header-border);max-height:70vh;overflow-y:auto}
 .nasq-header .nasq-nav__list{flex-direction:column;align-items:stretch}
