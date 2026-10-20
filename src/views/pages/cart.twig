@@ -9,10 +9,10 @@
         {% for item in cart.items %}
           <form class="nasq-cart-item" id="cart-item-{{ item.id }}" onchange="salla.form.onChange('cart.updateItem', event)">
             <input type="hidden" name="id" value="{{ item.id }}">
-            <a class="nasq-cart-item__image" href="{{ item.url }}"><img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" loading="lazy"></a>
+            <a class="nasq-cart-item__image" href="{{ item.url }}"><img src="{{ item.product_image }}" alt="{{ item.product_name }}" loading="lazy"></a>
             <div class="nasq-cart-item__body">
-              <a href="{{ item.url }}"><h2>{{ item.product.name }}</h2></a>
-              {% if item.options %}<ul class="nasq-cart-item__options">{% for option in item.options %}<li>{{ option.name }}: {{ option.value.name }}</li>{% endfor %}</ul>{% endif %}
+              <a href="{{ item.url }}"><h2>{{ item.product_name }}</h2></a>
+              {% if item.options %}<salla-product-options options="{{ item.options|json_encode|e }}" product-id="{{ item.id }}"></salla-product-options>{% endif %}
               <div class="nasq-cart-item__controls">
                 {% if item.is_hidden_quantity %}<input type="hidden" name="quantity" value="{{ item.quantity }}"><span>{{ item.quantity }}</span>{% else %}<salla-quantity-input cart-item-id="{{ item.id }}" name="quantity" value="{{ item.quantity }}" max="{{ item.max_quantity }}"></salla-quantity-input>{% endif %}
                 <strong>{{ item.total|money }}</strong>
