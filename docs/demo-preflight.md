@@ -112,3 +112,18 @@ Next: upload the candidate to a separate codex/nasq-builder-test branch, select 
 - Local assets endpoint responds HTTP 200. No new permission changes were performed by the agent.
 - Evidence: docs/nasq-styled-preview-2026-10-20.png.
 - Full media modes, mobile layouts, cart and checkout workflows remain unverified; this entry confirms restored styled desktop preview only.
+
+## Interaction and media QA — 2026-10-20
+
+- Chrome extension testing on nasq-demo-new: search for `فستان` returned product results; account opened the official login modal without submitting credentials. Empty cart rendered; continue-shopping now returns to the storefront after the fallback fix.
+- Earlier mobile check at 390x844: navigation opened, Escape closed it and restored focus; saved Hero height was 560px, zero overlay preserved, no horizontal overflow. A later viewport override did not change the measured storefront width; do not count it as mobile slider verification.
+- New Hero instances persist the selected background mode after the Manual dropdown source fix. Existing instances can retain the old field schema; migration/recreation remains a follow-up.
+- Temporary instance 52765340 verified all four background modes: direct video loaded (readyState 4) and played when visible; two video slides initialized and pagination selected the second slide; two distinct gallery images loaded and pagination selected the second image; a standalone gallery background image loaded successfully after save.
+- Discovered carousel gaps: 487px video inside a 720px Hero plus side gutters. Scoped wrapper styles now produce a full 720px video/image height. Fresh official draft 1914100118 confirmed this rendered correction.
+- Discovered empty slider ID suffix from component.id. Used the official theme-raed per-instance position pattern; fresh draft emitted nasq-hero-videos-3 and nasq-hero-images-3. Earlier sync acknowledgement alone did not update the prior rendered version.
+- Removed temporary instance 52765340 after QA. Its homepage links are absent; original Hero 2139582703 and existing page components retained.
+- Known editor friction: empty optional collection rows are reinserted on opening/saving; remove unused blank button/slide rows to save. This is not resolved by minLength 0 alone.
+- Console is not clean: Salla preview telemetry POST /_app/e/api/s/page returns 405, plus browser extension asynchronous message warnings. No framework error overlay or blank page observed during the media tests.
+- Local production passes: 24 reviewed artifacts, 55 settings, 3 components. Navigation and unsafe-dropdown regression checks pass. Fix commit 1af05fe pushed to codex/nasq-builder-test.
+- Remaining: mobile slider coverage, header/footer option combinations and logo swaps, populated cart/product options/checkout. Maintenance notice remains present; no order/payment was placed. Browser plugin absent; used the existing authenticated Chrome extension CUA session.
+- Screenshot evidence from prior checks is outside the repo in %TEMP%/nasq-qa-20261020 (search.png, mobile-hero.png).
