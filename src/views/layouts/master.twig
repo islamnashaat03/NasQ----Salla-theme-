@@ -37,6 +37,7 @@
     {% block content %}{% endblock %}
   </main>
   {% component 'footer.footer' %}
+  <div id="nasq-notifications" class="nasq-notifications" aria-live="polite" aria-relevant="additions" data-close-label="{{ trans('nasq.common.close') }}"></div>
   {% hook 'body:end' %}
   <salla-search></salla-search>
   <salla-login-modal></salla-login-modal>

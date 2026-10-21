@@ -27,6 +27,10 @@
 .nasq-hero100__media .s-slider-swiper-wrapper{height:100%}
 .nasq-hero100__media salla-slider .swiper-slide{height:100%;padding:0}
 .nasq-hero100__media .swiper-slide img,.nasq-hero100__media .swiper-slide video{display:block;height:100%;width:100%;object-fit:cover}
+.nasq-notifications{position:fixed;inset-block-start:20px;inset-inline-end:20px;z-index:10000;display:grid;gap:10px;width:min(380px,calc(100vw - 40px));pointer-events:none}
+.nasq-notification{display:flex;align-items:center;gap:16px;padding:16px 18px;background:#fff;color:#17211f;border:1px solid #d9e2de;border-inline-start:4px solid #47736b;border-radius:12px;box-shadow:0 8px 30px #17211f26;pointer-events:auto;overflow-wrap:anywhere}
+.nasq-notification[data-type=success]{border-inline-start-color:#24754b}.nasq-notification[data-type=error]{border-inline-start-color:#b42e39}
+.nasq-notification span{flex:1}.nasq-notification button{border:0;background:transparent;color:inherit;padding:4px;min-width:32px;min-height:32px;font-size:24px;cursor:pointer}.nasq-notification button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 @media(max-width:900px){
 .nasq-header .nasq-nav{background:var(--header-bg);color:var(--header-text);border-color:var(--header-border);max-height:70vh;overflow-y:auto}
 .nasq-header .nasq-nav__list{flex-direction:column;align-items:stretch}
