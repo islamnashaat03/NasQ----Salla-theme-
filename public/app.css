@@ -31,6 +31,7 @@
 .nasq-notification{display:flex;align-items:center;gap:16px;padding:16px 18px;background:#fff;color:#17211f;border:1px solid #d9e2de;border-inline-start:4px solid #47736b;border-radius:12px;box-shadow:0 8px 30px #17211f26;pointer-events:auto;overflow-wrap:anywhere}
 .nasq-notification[data-type=success]{border-inline-start-color:#24754b}.nasq-notification[data-type=error]{border-inline-start-color:#b42e39}
 .nasq-notification span{flex:1}.nasq-notification button{border:0;background:transparent;color:inherit;padding:4px;min-width:32px;min-height:32px;font-size:24px;cursor:pointer}.nasq-notification button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.nasq-hero100__inner{pointer-events:none}.nasq-hero100__content{pointer-events:auto}
 @media(max-width:900px){
 .nasq-header .nasq-nav{background:var(--header-bg);color:var(--header-text);border-color:var(--header-border);max-height:70vh;overflow-y:auto}
 .nasq-header .nasq-nav__list{flex-direction:column;align-items:stretch}

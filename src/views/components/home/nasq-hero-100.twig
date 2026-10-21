@@ -15,7 +15,7 @@
 {% set content_align = content_align ?: 'center' %}
 {% set overlay_opacity = component.overlay_opacity is defined and component.overlay_opacity is not null ? component.overlay_opacity : 40 %}
 <section class="nasq-hero100 nasq-hero100--{{ background_type }} nasq-hero100--h-{{ vertical_align }} nasq-hero100--x-{{ content_align }}" style="--hero-height:{{ component.height ?: 720 }}px;--hero-mobile-height:{{ component.mobile_height ?: 560 }}px;--hero-color:{{ component.text_color ?: '#ffffff' }};--hero-overlay:{{ component.overlay_color ?: '#000000' }};--hero-opacity:{{ overlay_opacity / 100 }};--hero-content-width:{{ component.content_width ?: 760 }}px">
-  <div class="nasq-hero100__media" aria-hidden="true">
+  <div class="nasq-hero100__media"{% if background_type not in ['image-slider', 'video-slider'] %} aria-hidden="true"{% endif %}>
     {% if background_type == 'video' and component.background_video %}
       <video playsinline muted {{ component.autoplay ? 'autoplay' : '' }} {{ component.loop ? 'loop' : '' }} poster="{{ component.video_poster }}"><source src="{{ component.background_video }}"></video>
     {% elseif background_type == 'image-slider' and component.image_slides %}
