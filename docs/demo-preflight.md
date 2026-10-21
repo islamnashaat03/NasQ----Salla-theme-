@@ -188,3 +188,12 @@ Next: upload the candidate to a separate codex/nasq-builder-test branch, select 
 - Mobile measured viewport/content/scroll widths all 390px; open/close and keyboard interaction passed. Emulated reduced motion ended with closed/open states and cleared transition styles; removed media and device emulation afterward.
 - Evidence: C:/Users/Q/AppData/Local/Temp/nasq-qa-20261021/questions-mobile.png. Local questions regression checks cover exclusive/multiple mode, interrupted toggles, independent instances, zero-duration and reduced motion. Navigation/notifier/dropdown checks also pass. Production: 29 review records, 55 global settings, 4 components.
 - Scope limits: colors/initial modes/spacing were tested on the Arabic demo; English storefront switching remains unavailable there. No additional production store publication or payment actions performed.
+
+## NASQ About Us component — 2026-10-21
+
+- Candidate 22b5aae loaded in official CLI draft 101040013. Synced home/nasq-about.twig and created retained demo instance 22851269.
+- Saved Arabic title and multiline story without image or CTA: text-only, one column, zero images and zero links, without empty media placeholders.
+- Selected an existing gallery image, added alt text, caption and CTA. Desktop rendered two 616px columns; image-at-end and text-first mobile options persisted. Image loaded successfully.
+- Mobile viewport and document scroll widths both measured 390px; one 358px content column, image height 280px, media order 1 (text first). CTA click navigated to the configured store homepage. Device emulation cleared afterward.
+- Evidence: C:/Users/Q/AppData/Local/Temp/nasq-qa-20261021/about-mobile.png. Demo copy explicitly identifies itself as sample content. Instance retained for review.
+- Remaining About QA: stacked layout, explicit text-only selection with an image configured, custom colors/spacing and English storefront. These are not claimed as tested by this run.
