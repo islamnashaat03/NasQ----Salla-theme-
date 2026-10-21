@@ -1338,6 +1338,369 @@
           "maximum": 1500
         }
       ]
+    },
+    {
+      "name": "nasq-about",
+      "key": "7162a873-6a24-4c5a-bcc9-b8b3141c3a41",
+      "title": {
+        "ar": "من نحن — نَسَق",
+        "en": "About Us — NASQ"
+      },
+      "icon": "sicon-store",
+      "path": "home.nasq-about",
+      "fields": [
+        {
+          "id": "eyebrow",
+          "label": "النص العلوي",
+          "type": "string",
+          "format": "text",
+          "multilanguage": true
+        },
+        {
+          "id": "title",
+          "label": "العنوان",
+          "type": "string",
+          "format": "text",
+          "multilanguage": true,
+          "required": true
+        },
+        {
+          "id": "story",
+          "label": "نبذة عن المتجر",
+          "type": "string",
+          "format": "textarea",
+          "multilanguage": true,
+          "required": true
+        },
+        {
+          "id": "image",
+          "label": "الصورة",
+          "type": "string",
+          "format": "image"
+        },
+        {
+          "id": "image_alt",
+          "label": "وصف الصورة",
+          "type": "string",
+          "format": "text",
+          "multilanguage": true
+        },
+        {
+          "id": "caption",
+          "label": "التعليق أسفل الصورة",
+          "type": "string",
+          "format": "text",
+          "multilanguage": true
+        },
+        {
+          "id": "button_label",
+          "label": "نص الزر",
+          "type": "string",
+          "format": "text",
+          "multilanguage": true
+        },
+        {
+          "id": "button_url",
+          "label": "رابط الزر",
+          "type": "string",
+          "format": "url"
+        },
+        {
+          "id": "layout",
+          "label": "طريقة العرض",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "required": true,
+          "options": [
+            {
+              "value": "split",
+              "label": "صورة بجوار النص",
+              "key": "about-layout-split"
+            },
+            {
+              "value": "stacked",
+              "label": "صورة فوق النص",
+              "key": "about-layout-stacked"
+            },
+            {
+              "value": "text",
+              "label": "نص فقط",
+              "key": "about-layout-text"
+            }
+          ],
+          "selected": [
+            {
+              "value": "split",
+              "label": "صورة بجوار النص",
+              "key": "about-layout-split"
+            }
+          ]
+        },
+        {
+          "id": "image_position",
+          "label": "مكان الصورة على الكمبيوتر",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "required": true,
+          "options": [
+            {
+              "value": "start",
+              "label": "في البداية",
+              "key": "about-image_position-start"
+            },
+            {
+              "value": "end",
+              "label": "في النهاية",
+              "key": "about-image_position-end"
+            }
+          ],
+          "selected": [
+            {
+              "value": "start",
+              "label": "في البداية",
+              "key": "about-image_position-start"
+            }
+          ]
+        },
+        {
+          "id": "mobile_order",
+          "label": "ترتيب الجوال",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "required": true,
+          "options": [
+            {
+              "value": "image-first",
+              "label": "الصورة أولًا",
+              "key": "about-mobile_order-image-first"
+            },
+            {
+              "value": "text-first",
+              "label": "النص أولًا",
+              "key": "about-mobile_order-text-first"
+            }
+          ],
+          "selected": [
+            {
+              "value": "image-first",
+              "label": "الصورة أولًا",
+              "key": "about-mobile_order-image-first"
+            }
+          ]
+        },
+        {
+          "id": "text_align",
+          "label": "محاذاة النص",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "required": true,
+          "options": [
+            {
+              "value": "start",
+              "label": "بداية السطر",
+              "key": "about-text_align-start"
+            },
+            {
+              "value": "center",
+              "label": "المنتصف",
+              "key": "about-text_align-center"
+            },
+            {
+              "value": "end",
+              "label": "نهاية السطر",
+              "key": "about-text_align-end"
+            }
+          ],
+          "selected": [
+            {
+              "value": "start",
+              "label": "بداية السطر",
+              "key": "about-text_align-start"
+            }
+          ]
+        },
+        {
+          "id": "image_fit",
+          "label": "طريقة عرض الصورة",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "required": true,
+          "options": [
+            {
+              "value": "cover",
+              "label": "تغطية المساحة",
+              "key": "about-image_fit-cover"
+            },
+            {
+              "value": "contain",
+              "label": "عرض الصورة كاملة",
+              "key": "about-image_fit-contain"
+            }
+          ],
+          "selected": [
+            {
+              "value": "cover",
+              "label": "تغطية المساحة",
+              "key": "about-image_fit-cover"
+            }
+          ]
+        },
+        {
+          "id": "background_color",
+          "label": "خلفية القسم",
+          "type": "string",
+          "format": "color",
+          "value": "#ffffff"
+        },
+        {
+          "id": "title_color",
+          "label": "لون العنوان",
+          "type": "string",
+          "format": "color",
+          "value": "#17211f"
+        },
+        {
+          "id": "text_color",
+          "label": "لون النص",
+          "type": "string",
+          "format": "color",
+          "value": "#52645b"
+        },
+        {
+          "id": "accent_color",
+          "label": "لون النص العلوي",
+          "type": "string",
+          "format": "color",
+          "value": "#24705c"
+        },
+        {
+          "id": "button_color",
+          "label": "خلفية الزر",
+          "type": "string",
+          "format": "color",
+          "value": "#17211f"
+        },
+        {
+          "id": "button_text_color",
+          "label": "لون نص الزر",
+          "type": "string",
+          "format": "color",
+          "value": "#ffffff"
+        },
+        {
+          "id": "padding_top",
+          "label": "البادنج العلوي",
+          "type": "number",
+          "format": "number",
+          "value": 64,
+          "minimum": 0,
+          "maximum": 200
+        },
+        {
+          "id": "padding_bottom",
+          "label": "البادنج السفلي",
+          "type": "number",
+          "format": "number",
+          "value": 64,
+          "minimum": 0,
+          "maximum": 200
+        },
+        {
+          "id": "padding_inline",
+          "label": "البادنج الجانبي",
+          "type": "number",
+          "format": "number",
+          "value": 0,
+          "minimum": 0,
+          "maximum": 80
+        },
+        {
+          "id": "margin_top",
+          "label": "المارجن العلوي",
+          "type": "number",
+          "format": "number",
+          "value": 0,
+          "minimum": 0,
+          "maximum": 200
+        },
+        {
+          "id": "margin_bottom",
+          "label": "المارجن السفلي",
+          "type": "number",
+          "format": "number",
+          "value": 0,
+          "minimum": 0,
+          "maximum": 200
+        },
+        {
+          "id": "content_gap",
+          "label": "المسافة بين الصورة والنص",
+          "type": "number",
+          "format": "number",
+          "value": 48,
+          "minimum": 0,
+          "maximum": 120
+        },
+        {
+          "id": "text_gap",
+          "label": "المسافة بين النصوص",
+          "type": "number",
+          "format": "number",
+          "value": 18,
+          "minimum": 0,
+          "maximum": 60
+        },
+        {
+          "id": "image_height",
+          "label": "ارتفاع الصورة على الكمبيوتر",
+          "type": "number",
+          "format": "number",
+          "value": 420,
+          "minimum": 120,
+          "maximum": 800
+        },
+        {
+          "id": "mobile_image_height",
+          "label": "ارتفاع الصورة على الجوال",
+          "type": "number",
+          "format": "number",
+          "value": 280,
+          "minimum": 100,
+          "maximum": 600
+        },
+        {
+          "id": "radius",
+          "label": "استدارة الصورة والزر",
+          "type": "number",
+          "format": "number",
+          "value": 16,
+          "minimum": 0,
+          "maximum": 80
+        },
+        {
+          "id": "title_size",
+          "label": "حجم العنوان",
+          "type": "number",
+          "format": "number",
+          "value": 40,
+          "minimum": 22,
+          "maximum": 72
+        },
+        {
+          "id": "body_size",
+          "label": "حجم النص",
+          "type": "number",
+          "format": "number",
+          "value": 18,
+          "minimum": 14,
+          "maximum": 28
+        }
+      ]
     }
   ]
 }

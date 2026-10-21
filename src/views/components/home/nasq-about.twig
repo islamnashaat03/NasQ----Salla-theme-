@@ -1,0 +1,29 @@
+{% set choices = {} %}
+{% for key, fallback in {'layout':'split', 'image_position':'start', 'mobile_order':'image-first', 'text_align':'start', 'image_fit':'cover'} %}
+  {% set value = attribute(component, key) %}
+  {% set value = value.value is defined ? value.value : value %}
+  {% set value = value is iterable ? value|first : value %}
+  {% set value = value.value is defined ? value.value : value %}
+  {% set choices = choices|merge({(key): value ?: fallback}) %}
+{% endfor %}
+{% set numbers = {} %}
+{% for key, bounds in {'padding_top':[64,0,200], 'padding_bottom':[64,0,200], 'padding_inline':[0,0,80], 'margin_top':[0,0,200], 'margin_bottom':[0,0,200], 'content_gap':[48,0,120], 'text_gap':[18,0,60], 'image_height':[420,120,800], 'mobile_image_height':[280,100,600], 'radius':[16,0,80], 'title_size':[40,22,72], 'body_size':[18,14,28]} %}
+  {% set value = attribute(component, key) %}
+  {% set value = value is defined and value is not null and value is not same as('') ? value : bounds[0] %}
+  {% set value = value < bounds[1] ? bounds[1] : (value > bounds[2] ? bounds[2] : value) %}
+  {% set numbers = numbers|merge({(key): value}) %}
+{% endfor %}
+{% set has_image = component.image and choices.layout != 'text' %}
+{% set alignment = choices.text_align in ['start','center','end'] ? choices.text_align : 'start' %}
+{% set image_fit = choices.image_fit == 'contain' ? 'contain' : 'cover' %}
+<section class="nasq-about {{ choices.layout == 'stacked' ? 'nasq-about--stacked' : '' }} {{ not has_image ? 'nasq-about--text-only' : '' }} {{ choices.image_position == 'end' ? 'nasq-about--image-end' : '' }} {{ choices.mobile_order == 'text-first' ? 'nasq-about--text-first' : '' }}" style="--about-pt:{{ numbers.padding_top }}px;--about-pb:{{ numbers.padding_bottom }}px;--about-px:{{ numbers.padding_inline }}px;--about-mt:{{ numbers.margin_top }}px;--about-mb:{{ numbers.margin_bottom }}px;--about-gap:{{ numbers.content_gap }}px;--about-text-gap:{{ numbers.text_gap }}px;--about-image-height:{{ numbers.image_height }}px;--about-mobile-height:{{ numbers.mobile_image_height }}px;--about-radius:{{ numbers.radius }}px;--about-title-size:{{ numbers.title_size }}px;--about-body-size:{{ numbers.body_size }}px;--about-align:{{ alignment }};--about-fit:{{ image_fit }};--about-bg:{{ component.background_color ?: '#ffffff' }};--about-title:{{ component.title_color ?: '#17211f' }};--about-text:{{ component.text_color ?: '#52645b' }};--about-accent:{{ component.accent_color ?: '#24705c' }};--about-button:{{ component.button_color ?: '#17211f' }};--about-button-text:{{ component.button_text_color ?: '#ffffff' }}">
+  <div class="nasq-container nasq-about__grid">
+    {% if has_image %}<figure class="nasq-about__media"><img src="{{ component.image }}" alt="{{ component.image_alt }}" loading="lazy" decoding="async">{% if component.caption %}<figcaption>{{ component.caption }}</figcaption>{% endif %}</figure>{% endif %}
+    <div class="nasq-about__content">
+      {% if component.eyebrow %}<span class="nasq-about__eyebrow">{{ component.eyebrow }}</span>{% endif %}
+      <h2>{{ component.title }}</h2>
+      {% if component.story %}<p class="nasq-about__story">{{ component.story }}</p>{% endif %}
+      {% if component.button_label and component.button_url %}<a class="nasq-about__button" href="{{ component.button_url }}">{{ component.button_label }}</a>{% endif %}
+    </div>
+  </div>
+</section>
