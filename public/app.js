@@ -25,6 +25,51 @@ const initializeNavigation = () => {
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initializeNavigation, { once: true });
 else initializeNavigation();
 
+const initializeQuestions = () => {
+  document.querySelectorAll('[data-nasq-questions]').forEach((section) => {
+    if (section.dataset.initialized) return;
+    section.dataset.initialized = 'true';
+    const states = new Map();
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const duration = Math.max(0, Math.min(1500, Number(section.dataset.duration) || 0));
+    const items = [...section.querySelectorAll('.nasq-questions__item')];
+    const setOpen = (item, open) => {
+      const state = states.get(item);
+      const start = item.getBoundingClientRect().height;
+      state.animation?.cancel();
+      state.open = open;
+      if (open) item.open = true;
+      const end = state.summary.getBoundingClientRect().height + (open ? state.answer.getBoundingClientRect().height : 0);
+      if (!duration || reducedMotion.matches || typeof item.animate !== 'function') {
+        item.open = open;
+        return;
+      }
+      item.style.overflow = 'hidden';
+      const animation = item.animate([{ height: `${start}px` }, { height: `${end}px` }], { duration, easing: 'cubic-bezier(.22,.61,.36,1)' });
+      state.animation = animation;
+      animation.onfinish = () => {
+        item.open = state.open;
+        item.style.overflow = '';
+        state.animation = null;
+      };
+    };
+    items.forEach((item) => {
+      const summary = item.querySelector('summary');
+      states.set(item, { open: item.open, summary, answer: item.querySelector('.nasq-questions__answer'), animation: null });
+      summary.addEventListener('click', (event) => {
+        event.preventDefault();
+        const open = !states.get(item).open;
+        if (open && section.dataset.multiple !== 'true') {
+          items.forEach((other) => { if (other !== item && states.get(other).open) setOpen(other, false); });
+        }
+        setOpen(item, open);
+      });
+    });
+  });
+};
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initializeQuestions, { once: true });
+else initializeQuestions();
+
 if (typeof salla !== 'undefined') salla.onReady(() => {
   const cartItems = document.querySelector('.nasq-cart__items');
   if (cartItems) {

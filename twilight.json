@@ -1006,6 +1006,338 @@
         }
       ],
       "key": "bbeec227-5fcd-44ae-827d-e5684f2b1071"
+    },
+    {
+      "name": "nasq-questions",
+      "key": "e3aee6f5-853c-4481-a51b-acbe20e383ad",
+      "title": {
+        "ar": "أسئلة نَسَق",
+        "en": "NASQ Questions"
+      },
+      "icon": "sicon-question",
+      "path": "home.nasq-questions",
+      "fields": [
+        {
+          "id": "title",
+          "label": "عنوان القسم",
+          "type": "string",
+          "format": "text",
+          "multilanguage": true
+        },
+        {
+          "id": "description",
+          "label": "وصف القسم",
+          "type": "string",
+          "format": "textarea",
+          "multilanguage": true
+        },
+        {
+          "id": "items",
+          "label": "الأسئلة والإجابات",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 10,
+          "fields": [
+            {
+              "id": "question",
+              "label": "السؤال",
+              "type": "string",
+              "format": "text",
+              "required": true,
+              "multilanguage": true
+            },
+            {
+              "id": "answer",
+              "label": "الإجابة",
+              "type": "string",
+              "format": "textarea",
+              "required": true,
+              "multilanguage": true
+            }
+          ]
+        },
+        {
+          "id": "initial_state",
+          "label": "حالة الأسئلة عند فتح الصفحة",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "required": true,
+          "options": [
+            {
+              "value": "first",
+              "label": "أول سؤال مفتوح",
+              "key": "questions-initial_state-first"
+            },
+            {
+              "value": "all",
+              "label": "الكل مفتوح",
+              "key": "questions-initial_state-all"
+            },
+            {
+              "value": "none",
+              "label": "الكل مقفول",
+              "key": "questions-initial_state-none"
+            }
+          ],
+          "selected": [
+            {
+              "value": "first",
+              "label": "أول سؤال مفتوح",
+              "key": "questions-initial_state-first"
+            }
+          ]
+        },
+        {
+          "id": "allow_multiple",
+          "label": "السماح بفتح أكثر من سؤال معًا",
+          "type": "boolean",
+          "format": "switch",
+          "value": true,
+          "selected": true
+        },
+        {
+          "id": "closed_icon",
+          "label": "أيقونة السؤال المقفول",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "required": true,
+          "options": [
+            {
+              "value": "plus",
+              "label": "علامة زائد",
+              "key": "questions-closed_icon-plus"
+            },
+            {
+              "value": "chevron",
+              "label": "زاوية لأسفل",
+              "key": "questions-closed_icon-chevron"
+            },
+            {
+              "value": "arrow",
+              "label": "سهم لأسفل",
+              "key": "questions-closed_icon-arrow"
+            }
+          ],
+          "selected": [
+            {
+              "value": "plus",
+              "label": "علامة زائد",
+              "key": "questions-closed_icon-plus"
+            }
+          ]
+        },
+        {
+          "id": "open_icon",
+          "label": "أيقونة السؤال المفتوح",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "required": true,
+          "options": [
+            {
+              "value": "minus",
+              "label": "علامة ناقص",
+              "key": "questions-open_icon-minus"
+            },
+            {
+              "value": "chevron",
+              "label": "زاوية لأعلى",
+              "key": "questions-open_icon-chevron"
+            },
+            {
+              "value": "arrow",
+              "label": "سهم لأعلى",
+              "key": "questions-open_icon-arrow"
+            }
+          ],
+          "selected": [
+            {
+              "value": "minus",
+              "label": "علامة ناقص",
+              "key": "questions-open_icon-minus"
+            }
+          ]
+        },
+        {
+          "id": "icon_position",
+          "label": "مكان الأيقونة",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "required": true,
+          "options": [
+            {
+              "value": "end",
+              "label": "بعد السؤال",
+              "key": "questions-icon_position-end"
+            },
+            {
+              "value": "start",
+              "label": "قبل السؤال",
+              "key": "questions-icon_position-start"
+            }
+          ],
+          "selected": [
+            {
+              "value": "end",
+              "label": "بعد السؤال",
+              "key": "questions-icon_position-end"
+            }
+          ]
+        },
+        {
+          "id": "icon_color",
+          "label": "لون الأيقونة",
+          "type": "string",
+          "format": "color",
+          "value": "#24705c"
+        },
+        {
+          "id": "title_color",
+          "label": "لون عنوان القسم",
+          "type": "string",
+          "format": "color",
+          "value": "#17211f"
+        },
+        {
+          "id": "question_color",
+          "label": "لون السؤال",
+          "type": "string",
+          "format": "color",
+          "value": "#17211f"
+        },
+        {
+          "id": "text_color",
+          "label": "لون نص الإجابة والوصف",
+          "type": "string",
+          "format": "color",
+          "value": "#52645b"
+        },
+        {
+          "id": "background_color",
+          "label": "خلفية القسم",
+          "type": "string",
+          "format": "color",
+          "value": "#f5f8f6"
+        },
+        {
+          "id": "item_color",
+          "label": "خلفية السؤال",
+          "type": "string",
+          "format": "color",
+          "value": "#ffffff"
+        },
+        {
+          "id": "border_color",
+          "label": "لون الحدود",
+          "type": "string",
+          "format": "color",
+          "value": "#dce6e0"
+        },
+        {
+          "id": "section_padding_top",
+          "label": "بادنج القسم العلوي",
+          "type": "number",
+          "format": "number",
+          "value": 56,
+          "minimum": 0,
+          "maximum": 200
+        },
+        {
+          "id": "section_padding_bottom",
+          "label": "بادنج القسم السفلي",
+          "type": "number",
+          "format": "number",
+          "value": 56,
+          "minimum": 0,
+          "maximum": 200
+        },
+        {
+          "id": "section_margin_top",
+          "label": "مارجن القسم العلوي",
+          "type": "number",
+          "format": "number",
+          "value": 0,
+          "minimum": 0,
+          "maximum": 200
+        },
+        {
+          "id": "section_margin_bottom",
+          "label": "مارجن القسم السفلي",
+          "type": "number",
+          "format": "number",
+          "value": 0,
+          "minimum": 0,
+          "maximum": 200
+        },
+        {
+          "id": "item_padding",
+          "label": "البادنج الداخلي للسؤال",
+          "type": "number",
+          "format": "number",
+          "value": 22,
+          "minimum": 0,
+          "maximum": 80
+        },
+        {
+          "id": "item_gap",
+          "label": "المسافة بين الأسئلة",
+          "type": "number",
+          "format": "number",
+          "value": 12,
+          "minimum": 0,
+          "maximum": 80
+        },
+        {
+          "id": "text_gap",
+          "label": "المسافة بين السؤال والإجابة",
+          "type": "number",
+          "format": "number",
+          "value": 12,
+          "minimum": 0,
+          "maximum": 80
+        },
+        {
+          "id": "heading_gap",
+          "label": "المسافة بين العنوان والأسئلة",
+          "type": "number",
+          "format": "number",
+          "value": 28,
+          "minimum": 0,
+          "maximum": 100
+        },
+        {
+          "id": "radius",
+          "label": "استدارة الحواف",
+          "type": "number",
+          "format": "number",
+          "value": 12,
+          "minimum": 0,
+          "maximum": 60
+        },
+        {
+          "id": "icon_size",
+          "label": "حجم الأيقونة",
+          "type": "number",
+          "format": "number",
+          "value": 24,
+          "minimum": 12,
+          "maximum": 48
+        },
+        {
+          "id": "duration",
+          "label": "سرعة الأنيميشن بالمللي ثانية (0 بدون حركة)",
+          "type": "number",
+          "format": "number",
+          "value": 280,
+          "minimum": 0,
+          "maximum": 1500
+        }
+      ]
     }
   ]
 }

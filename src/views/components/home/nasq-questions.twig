@@ -1,0 +1,37 @@
+{% set choices = {} %}
+{% for key, fallback in {'initial_state':'first', 'closed_icon':'plus', 'open_icon':'minus', 'icon_position':'end'} %}
+  {% set value = attribute(component, key) %}
+  {% set value = value.value is defined ? value.value : value %}
+  {% set value = value is iterable ? value|first : value %}
+  {% set value = value.value is defined ? value.value : value %}
+  {% set choices = choices|merge({(key): value ?: fallback}) %}
+{% endfor %}
+{% set numbers = {} %}
+{% for key, bounds in {'section_padding_top':[56,0,200], 'section_padding_bottom':[56,0,200], 'section_margin_top':[0,0,200], 'section_margin_bottom':[0,0,200], 'item_padding':[22,0,80], 'item_gap':[12,0,80], 'text_gap':[12,0,80], 'heading_gap':[28,0,100], 'radius':[12,0,60], 'icon_size':[24,12,48], 'duration':[280,0,1500]} %}
+  {% set value = attribute(component, key) %}
+  {% set value = value is defined and value is not null and value is not same as('') ? value : bounds[0] %}
+  {% set value = value < bounds[1] ? bounds[1] : (value > bounds[2] ? bounds[2] : value) %}
+  {% set numbers = numbers|merge({(key): value}) %}
+{% endfor %}
+{% set closed_symbols = {'plus':'+', 'chevron':'⌄', 'arrow':'↓'} %}
+{% set open_symbols = {'minus':'−', 'chevron':'⌃', 'arrow':'↑'} %}
+<section class="nasq-questions {{ choices.icon_position == 'start' ? 'nasq-questions--icon-start' : '' }}" data-nasq-questions data-duration="{{ numbers.duration }}" data-multiple="{{ component.allow_multiple ? 'true' : 'false' }}" style="--questions-pt:{{ numbers.section_padding_top }}px;--questions-pb:{{ numbers.section_padding_bottom }}px;--questions-mt:{{ numbers.section_margin_top }}px;--questions-mb:{{ numbers.section_margin_bottom }}px;--questions-pad:{{ numbers.item_padding }}px;--questions-gap:{{ numbers.item_gap }}px;--questions-text-gap:{{ numbers.text_gap }}px;--questions-heading-gap:{{ numbers.heading_gap }}px;--questions-radius:{{ numbers.radius }}px;--questions-icon-size:{{ numbers.icon_size }}px;--questions-icon:{{ component.icon_color ?: '#24705c' }};--questions-title:{{ component.title_color ?: '#17211f' }};--questions-question:{{ component.question_color ?: '#17211f' }};--questions-text:{{ component.text_color ?: '#52645b' }};--questions-bg:{{ component.background_color ?: '#f5f8f6' }};--questions-item:{{ component.item_color ?: '#ffffff' }};--questions-border:{{ component.border_color ?: '#dce6e0' }}">
+  <div class="nasq-container">
+    {% if component.title or component.description %}<div class="nasq-questions__heading">
+      {% if component.title %}<h2>{{ component.title }}</h2>{% endif %}
+      {% if component.description %}<p>{{ component.description }}</p>{% endif %}
+    </div>{% endif %}
+    <div class="nasq-questions__list">
+      {% for item in component.items %}
+        {% set expanded = choices.initial_state == 'all' or (choices.initial_state == 'first' and loop.first) %}
+        <details class="nasq-questions__item" {{ expanded ? 'open' : '' }}>
+          <summary aria-controls="nasq-answer-{{ position }}-{{ loop.index }}">
+            <span class="nasq-questions__question">{{ item.question }}</span>
+            <span class="nasq-questions__icon" aria-hidden="true"><span class="nasq-questions__closed">{{ closed_symbols[choices.closed_icon] ?: '+' }}</span><span class="nasq-questions__opened">{{ open_symbols[choices.open_icon] ?: '−' }}</span></span>
+          </summary>
+          <div class="nasq-questions__answer" id="nasq-answer-{{ position }}-{{ loop.index }}"><div>{{ item.answer }}</div></div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>

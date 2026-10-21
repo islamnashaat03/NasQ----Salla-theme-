@@ -42,3 +42,10 @@
 }
 @media(max-width:600px){.nasq-footer--brand-first .nasq-footer__grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nasq-banner img{transition:none}}
+.nasq-questions{padding-block:var(--questions-pt) var(--questions-pb);margin-block:var(--questions-mt) var(--questions-mb);background:var(--questions-bg);color:var(--questions-text)}
+.nasq-questions__heading{max-width:72ch;margin-block-end:var(--questions-heading-gap)}.nasq-questions__heading h2{margin:0;color:var(--questions-title);font-size:clamp(26px,4vw,40px);line-height:1.25}.nasq-questions__heading p{margin:12px 0 0;white-space:pre-line;line-height:1.8}
+.nasq-questions__list{display:grid;gap:var(--questions-gap)}.nasq-questions__item{border:1px solid var(--questions-border);border-radius:var(--questions-radius);background:var(--questions-item);min-width:0}
+.nasq-questions__item summary{display:flex;align-items:center;gap:16px;list-style:none;cursor:pointer;padding:var(--questions-pad);color:var(--questions-question);font-weight:700;line-height:1.6}.nasq-questions__item summary::-webkit-details-marker{display:none}.nasq-questions__item summary:focus-visible{outline:3px solid var(--questions-icon);outline-offset:3px;border-radius:var(--questions-radius)}
+.nasq-questions__question{flex:1;min-width:0;overflow-wrap:anywhere}.nasq-questions__icon{display:grid;place-items:center;flex:none;color:var(--questions-icon);font-size:var(--questions-icon-size);width:1.3em;line-height:1}.nasq-questions--icon-start .nasq-questions__icon{order:-1}
+.nasq-questions__opened{display:none}.nasq-questions__item[open] .nasq-questions__opened{display:inline}.nasq-questions__item[open] .nasq-questions__closed{display:none}
+.nasq-questions__answer{padding:0 var(--questions-pad) var(--questions-pad);line-height:1.85;overflow-wrap:anywhere;white-space:pre-line}.nasq-questions__answer>div{padding-block-start:var(--questions-text-gap)}
